@@ -39,3 +39,19 @@
 - To learn backend and full stack deployment.
 - Improving frontend skills,
 - Working positively with all group members.
+
+# Name: Tara Ortega
+
+### Introduction:
+
+- I'm a Full Stack Developer with a degree in BSc Computing & IT and Business.
+- I've been actively building my programming skills through a range of online courses to further strengthen my skills and gain practical experience.
+
+### Hobby
+
+- I don't have a particular hobby but I love trying new things and gaining new experiences, such as taking dance classes or learning new skills.
+
+### Goals for this project
+
+- Develop skills by completing the project within the specified timeframe.
+- Collaborate effectively as part of a team.
