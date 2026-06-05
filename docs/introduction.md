@@ -55,3 +55,25 @@
 
 - Develop skills by completing the project within the specified timeframe.
 - Collaborate effectively as part of a team.
+
+## Name: Monique Khahin
+
+### Introduction
+- I am a Law and Healthcare graduate who has recently returned to the healthcare sector after working as a paralegal 
+- I have always had an interest in technology and started to learn to `code` during maternity leave and I have enjoyed developing my technical skills
+- I am excited to continue growing my knowledge in software development and gaining practical experience through this project
+
+### Hobbies
+- I enjoy reading, travelling, dancing, and cooking 
+
+### Why I enjoy it
+- Reading allows me to learn new things.
+- Travelling allows me to experience different cultures and meet new people. 
+- Dancing is a fun way to stay active.
+- Cooking allows me be creative in the kitchen, and I enjoy experimenting with recipes, adding my own twist to them.
+
+### Goals for this project 
+- Collaborate with my team members and learn from their diverse skills and experiences
+- Strengthen my coding and problem-solving skills through practical application 
+- Contrubite positively to the team and help deliver a successful project
+
