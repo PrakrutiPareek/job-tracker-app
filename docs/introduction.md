@@ -22,7 +22,7 @@
 - Contribute effectively as a team member
 - Complete jobEase project successfully & Improving my skillsets
 
-## ** Name: Prakruti Pareek **
+## Name: Prakruti Pareek
 
 ### Introduction:
 
