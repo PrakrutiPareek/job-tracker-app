@@ -40,7 +40,7 @@
 - Improving frontend skills,
 - Working positively with all group members.
 
-# Name: Tara Ortega
+## Name: Tara Ortega
 
 ### Introduction:
 
