@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+:root {
+  --primary: #000000;
+  --secondary: #ffffff;
+  --accent: #fca311;
+  --card: #14213d;
+  --warning: #ce2029;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-family: "Inter", sans-serif;
+}

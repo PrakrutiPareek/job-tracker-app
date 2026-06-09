@@ -1,24 +1,29 @@
-
-import './App.css'
+import {Routes, Route} from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Dashboard from "./Pages/Dashboard";
+import Applications from "./Pages/Applications";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import Layout from "./Components/Layout";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Header */}
-      <header className="bg-black text-white p-4">
-        <h1 className="text-2xl font-bold">JobEase</h1>
-        <p className="text-sm text-gray-300">
-          Tailwind CSS Test Page
-        </p>
-      </header>
-
-      {/* Main Content */}
-     
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/applications" element={<Applications />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
-
-
 export default App;
-
