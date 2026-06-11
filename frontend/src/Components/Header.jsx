@@ -19,15 +19,18 @@ const Header = () => {
   ];
 
   return (
-    <header className="flex gap-4">
-      <Link to="/">JobEase</Link>
+    <header className="flex gap-4" aria-label="Main navigation">
+      <Link to="/" aria-label="JobEase Home">
+        JobEase
+      </Link>
 
-      <nav className="flex gap-2">
+      <nav className="flex gap-2" aria-label="Primary navigation">
         {navLinks.map(({path, label}) => (
           <NavLink
             key={path}
             to={path}
             style={({isActive}) => (isActive ? styles : null)}
+            aria-current={({isActive}) => (isActive ? "page" : undefined)}
           >
             {label}
           </NavLink>
