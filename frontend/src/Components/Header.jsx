@@ -1,19 +1,12 @@
 import {Link, NavLink} from "react-router-dom";
 
 const Header = () => {
-  const styles = {
-    fontWeight: "bold",
-    textDecoration: "underline",
-    color: "var(--accent)",
-  };
-
   //NavLinks array
   const navLinks = [
     {path: "/", label: "Home"},
-    {path: "/about", label: "About"},
-    {path: "/contact", label: "Contact"},
-    {path: "/dashboard", label: "Dashboard"},
-    {path: "/applications", label: "Applications"},
+    {path: "/profile", label: "Profile"},
+    {path: "/profile/dashboard", label: "Dashboard"},
+    {path: "/profile/applications", label: "Applications"},
     {path: "/login", label: "Login"},
     {path: "/signup", label: "Signup"},
   ];
@@ -29,7 +22,7 @@ const Header = () => {
           <NavLink
             key={path}
             to={path}
-            style={({isActive}) => (isActive ? styles : null)}
+            className={({isActive}) => (isActive ? "active-link" : null)}
             aria-current={({isActive}) => (isActive ? "page" : undefined)}
           >
             {label}

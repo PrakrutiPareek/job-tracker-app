@@ -20,7 +20,11 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  background-color: var(--primary);
-  color: var(--secondary);
+  background-color: var(--black);
+  color: var(--gray);
   font-family: "Inter", sans-serif;
+}
+
+.active-link {
+  @apply text-(--yellow) font-bold underline;
 }
