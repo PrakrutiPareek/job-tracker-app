@@ -13,15 +13,14 @@ const Header = () => {
 
   return (
     <header className="flex gap-4" aria-label="Main navigation">
-      <Link
-        to="/"
-        aria-label="JobEase Home"
-        className="mt-10 mb-20 text-center text-(--yellow) text-4xl font-bold"
-      >
-        JobEase
-      </Link>
-
       <nav className="flex gap-2" aria-label="Primary navigation">
+        <Link
+          to="/"
+          aria-label="JobEase Home"
+          className="text-center text-(--yellow) text-4xl font-bold"
+        >
+          JobEase
+        </Link>
         {navLinks.map(({path, label}) => (
           <NavLink
             key={path}

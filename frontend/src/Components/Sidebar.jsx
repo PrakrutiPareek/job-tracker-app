@@ -9,12 +9,18 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-[256px] border-r h-full">
-      <nav className="flex flex-col ml-6.5 gap-7">
+    <aside
+      className="w-[256px] border-r h-full"
+      aria-label="Secondary navigation"
+    >
+      <nav
+        className="flex flex-col ml-6.5 gap-7"
+        aria-label="Sidebar navigation"
+      >
         <Link
           to="/"
           aria-label="JobEase Home"
-          className="mt-10 mb-20 text-center text-(--yellow) text-4xl font-bold"
+          className="mt-10 mb-10 text-center text-(--yellow) text-4xl font-bold"
         >
           JobEase
         </Link>
