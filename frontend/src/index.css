@@ -28,3 +28,7 @@ body {
 .active-link {
   @apply text-(--yellow) font-bold underline;
 }
+
+.user-link {
+  @apply bg-(--navy-blue);
+}

@@ -13,7 +13,11 @@ const Header = () => {
 
   return (
     <header className="flex gap-4" aria-label="Main navigation">
-      <Link to="/" aria-label="JobEase Home">
+      <Link
+        to="/"
+        aria-label="JobEase Home"
+        className="mt-10 mb-20 text-center text-(--yellow) text-4xl font-bold"
+      >
         JobEase
       </Link>
 
