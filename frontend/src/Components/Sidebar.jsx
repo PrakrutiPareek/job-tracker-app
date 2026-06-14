@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className="w-[256px] border-r h-full"
+      className="w-[256px] border-r h-screen"
       aria-label="Secondary navigation"
     >
       <nav
