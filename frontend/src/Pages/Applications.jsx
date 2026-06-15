@@ -1,5 +1,5 @@
-import {mockApplications} from "../Mock_data/mockApplications";
-import {tableHeadings} from "../Mock_data/applications_tableHeadings";
+import {mockApplications} from "../Data/mockApplications";
+import {tableHeadings} from "../Data/applications_tableHeadings";
 const Applications = () => {
   return (
     <main className="mt-7 mx-11.75">
