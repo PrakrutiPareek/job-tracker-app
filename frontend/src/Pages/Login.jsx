@@ -1,40 +1,42 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Form.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   const validatePassword = (password) => {
     const hasMinLength = password.length >= 8;
-    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
     const hasSymbol = /[!@#$%^&*]/.test(password);
 
-    return hasMinLength && hasLetter && hasNumber && hasSymbol;
+    return (
+      hasMinLength && hasUppercase && hasLowercase && hasNumber && hasSymbol
+    );
   };
 
-  const validate = () => {
+  const handleLogin = () => {
     const newErrors = {};
 
     if (!email) {
       newErrors.email = "Email is required!";
+    } else if (!validateEmail(email)) {
+      newErrors.email = "Enter a valid email address!";
     }
 
     if (!password) {
       newErrors.password = "Password is required!";
     } else if (!validatePassword(password)) {
       newErrors.password =
-        "Password must be at least 8 characters with letters, numbers and symbols!";
+        "Password must contain uppercase, lowercase, number and symbol.";
     }
-
-    return newErrors;
-  };
-
-  const handleLogin = () => {
-    const newErrors = validate();
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -42,59 +44,74 @@ function Login() {
     }
 
     setErrors({});
-    console.log("Email:", email);
-    console.log("Password:", password);
+    console.log("Login successful");
   };
 
   return (
-    <div className="form-container">
-      <div className="form-card">
-        <h1>Log in to your account</h1>
+    <div className="min-h-screen flex items-center justify-center bg-[#0a0f1e]">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleLogin();
+        }}
+        className="w-[420px] bg-white p-12 rounded-xl"
+      >
+        <h1 className="text-2xl font-bold text-center text-black mb-8">
+          Log in to your account
+        </h1>
 
-        <div className="input-group">
-          <label htmlFor="email">Email Address</label>
+        <div className="mb-5">
+          <label className="block mb-2 text-black">Email Address</label>
 
           <input
             type="email"
-            id="email"
+            className="w-full border rounded-lg p-3 bg-gray-100 text-black"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={errors.email ? "error" : ""}
           />
 
-          {errors.email && <p className="error-message">{errors.email}</p>}
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={errors.password ? "error" : ""}
-          />
-
-          <small className="hint-text">
-            Minimum 8 characters with letters, numbers and symbols.
-          </small>
-
-          {errors.password && (
-            <p className="error-message">{errors.password}</p>
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
           )}
         </div>
 
-        <button className="primary-btn" onClick={handleLogin}>
+        <div className="mb-5">
+          <label className="block mb-2 text-black">Password</label>
+
+          <input
+            type="password"
+            className="w-full border rounded-lg p-3 bg-gray-100 text-black"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <p className="text-xs text-gray-500 mt-1">
+            Minimum 8 characters with uppercase, lowercase, number and symbol.
+          </p>
+
+          {errors.password && (
+            <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+        >
           Log In
         </button>
 
-        <p className="divider">Or log in with:</p>
-
-        <p className="bottom-link">
-          No account yet? <Link to="/signup">Sign Up</Link>
+        <p className="text-center text-gray-500 mt-5">
+          No account yet?{" "}
+          <Link to="/signup" className="text-blue-600">
+            Sign Up
+          </Link>
         </p>
-      </div>
+
+        <Link to="/" className="block text-center mt-5 text-blue-600">
+          ← Back to Home
+        </Link>
+      </form>
     </div>
   );
 }
