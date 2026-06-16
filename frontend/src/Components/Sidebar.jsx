@@ -1,5 +1,5 @@
 import {Link, NavLink} from "react-router-dom";
-import {SquareUser, LibraryBig, LayoutDashboard} from "lucide-react";
+import {SquareUser, LibraryBig, LayoutDashboard, LogOut} from "lucide-react";
 
 const Sidebar = () => {
   const navLinks = [
@@ -10,20 +10,20 @@ const Sidebar = () => {
 
   return (
     <aside
-      className="w-[256px] border-r h-full"
+      className="w-[256px] border-r h-screen flex flex-col"
       aria-label="Secondary navigation"
     >
+      <Link
+        to="/"
+        aria-label="JobEase Home"
+        className="text-center mt-10 mb-10 text-(--yellow) text-4xl font-bold"
+      >
+        JobEase
+      </Link>
       <nav
-        className="flex flex-col ml-6.5 gap-7"
+        className="flex flex-col mx-6.5 gap-7"
         aria-label="Sidebar navigation"
       >
-        <Link
-          to="/"
-          aria-label="JobEase Home"
-          className="mt-10 mb-10 text-center text-(--yellow) text-4xl font-bold"
-        >
-          JobEase
-        </Link>
         {navLinks.map((link) => {
           const Icon = link.icon;
           return (
@@ -33,7 +33,7 @@ const Sidebar = () => {
               end={link.end}
               aria-current={({isActive}) => (isActive ? "page" : undefined)}
               className={({isActive}) =>
-                `flex items-center gap-3 ${isActive ? "user-link" : null}`
+                `flex items-center gap-3 py-3 px-2 ${isActive ? "user-link" : null}`
               }
             >
               <Icon size={20} />
@@ -42,6 +42,12 @@ const Sidebar = () => {
           );
         })}
       </nav>
+      <Link to="/" aria-label="Logout button" className="mt-auto mb-20 ml-8">
+        <button className="flex items-center gap-3">
+          <LogOut size={15} />
+          Logout
+        </button>
+      </Link>
     </aside>
   );
 };

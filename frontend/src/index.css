@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --font-main: "Inter", sans-serif;
+  --font-headings: "Libre Caslon Text", serif;
+}
+
 :root {
+  /* Brand colors */
   --black: #000000;
   --navy-blue: #14213d;
   --yellow: #fca311;
@@ -22,7 +28,7 @@ body {
   margin: 0;
   background-color: var(--black);
   color: var(--gray);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-main);
 }
 
 .active-link {
