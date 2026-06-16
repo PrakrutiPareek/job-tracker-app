@@ -16,7 +16,6 @@ function Login() {
     const hasLowercase = /[a-z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
     const hasSymbol = /[!@#$%^&*]/.test(password);
-
     return (
       hasMinLength && hasUppercase && hasLowercase && hasNumber && hasSymbol
     );
@@ -25,9 +24,10 @@ function Login() {
   const handleLogin = () => {
     const newErrors = {};
 
-    if (!email) {
+    // ✅ .trim() to avoid whitespace errors
+    if (!email.trim()) {
       newErrors.email = "Email is required!";
-    } else if (!validateEmail(email)) {
+    } else if (!validateEmail(email.trim())) {
       newErrors.email = "Enter a valid email address!";
     }
 
@@ -48,68 +48,113 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0f1e]">
+    <div
+      className="min-h-screen flex items-center justify-center"
+      style={{
+        background:
+          "linear-gradient(135deg, #0a0f2e 0%, #1a1f4e 50%, #0a0f2e 100%)",
+      }}
+    >
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleLogin();
         }}
-        className="w-[420px] bg-white p-12 rounded-xl"
+        className="w-[420px] p-12 rounded-xl"
+        style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
       >
-        <h1 className="text-2xl font-bold text-center text-black mb-8">
+        {/* Title */}
+        <h1
+          className="text-3xl font-bold text-center mb-8"
+          style={{ color: "#f5a623", fontFamily: "Georgia, serif" }}
+        >
           Log in to your account
         </h1>
 
+        {/* Email input */}
         <div className="mb-5">
-          <label className="block mb-2 text-black">Email Address</label>
-
+          <label
+            className="block mb-2 font-semibold"
+            style={{ color: "#f5a623" }}
+          >
+            Email Address
+          </label>
           <input
             type="email"
-            className="w-full border rounded-lg p-3 bg-gray-100 text-black"
+            placeholder="your@email.com"
+            className="w-full rounded-lg p-3 text-black"
+            style={{ backgroundColor: "#e8e8e8" }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            aria-label="Email Address"
           />
-
           {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            <p className="text-red-400 text-sm mt-1">{errors.email}</p>
           )}
         </div>
 
+        {/* Password input */}
         <div className="mb-5">
-          <label className="block mb-2 text-black">Password</label>
-
+          <label
+            className="block mb-2 font-semibold"
+            style={{ color: "#f5a623" }}
+          >
+            Password
+          </label>
           <input
             type="password"
-            className="w-full border rounded-lg p-3 bg-gray-100 text-black"
+            placeholder="Enter your password"
+            className="w-full rounded-lg p-3 text-black"
+            style={{ backgroundColor: "#e8e8e8" }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            aria-label="Password"
           />
-
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs mt-1" style={{ color: "#aaaaaa" }}>
             Minimum 8 characters with uppercase, lowercase, number and symbol.
           </p>
-
           {errors.password && (
-            <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            <p className="text-red-400 text-sm mt-1">{errors.password}</p>
           )}
         </div>
 
+        {/* Remember me + Forgot password */}
+        <div className="flex justify-between items-center mb-5">
+          <label className="flex items-center gap-2 text-white text-sm">
+            <input type="checkbox" className="accent-yellow-500" />
+            Remember me
+          </label>
+          <span className="text-sm cursor-pointer" style={{ color: "#f5a623" }}>
+            Forgot Password?
+          </span>
+        </div>
+
+        {/* Login button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+          className="w-full p-3 rounded-lg font-bold text-black"
+          style={{ backgroundColor: "#f5a623" }}
         >
           Log In
         </button>
 
-        <p className="text-center text-gray-500 mt-5">
-          No account yet?{" "}
-          <Link to="/signup" className="text-blue-600">
-            Sign Up
+        {/* Divider */}
+        <hr className="my-5 border-gray-600" />
+
+        {/* Sign up link */}
+        <p className="text-center text-sm">
+          <Link to="/signup" style={{ color: "#f5a623" }}>
+            No account yet? Sign Up
           </Link>
         </p>
 
-        <Link to="/" className="block text-center mt-5 text-blue-600">
-          ← Back to Home
+        {/* Back to home */}
+        <Link
+          to="/"
+          className="block text-center mt-4 text-2xl"
+          style={{ color: "#ffffff" }}
+        >
+          ←
         </Link>
       </form>
     </div>
