@@ -12,6 +12,7 @@ import Signup from "./Pages/Signup";
 //layouts
 import MainLayout from "./Components/MainLayout";
 import UserLayout from "./Components/UserLayout";
+import PageNotFound from "./Pages/PageNotFound";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="applications" element={<Applications />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
