@@ -1,5 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
+//pages
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -9,18 +10,28 @@ import Applications from "./Pages/Applications";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 
-import Layout from "./Components/Layout";
+//layouts
+import MainLayout from "./Components/MainLayout";
+import UserLayout from "./Components/UserLayout";
 
 function App() {
   return (
     <Routes>
-      {/* Pages WITH navbar/footer */}
-      <Route path="/" element={<Layout />}>
+      {/* MainLayout for Navbar */}
+      <Route path="/" element={<MainLayout />}>
+        {/* Auth pages WITH navbar/footer */}
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="applications" element={<Applications />} />
+      </Route>
+
+      {/* UserLayout for Sidebar */}
+      <Route path="/profile" element={<UserLayout />}>
+        <Route index element={<Profile />} />
+        <Route path="applications" element={<Applications />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Route>
 
       {/* Auth pages WITHOUT navbar/footer */}
