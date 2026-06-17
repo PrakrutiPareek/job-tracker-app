@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --font-main: "Inter", sans-serif;
+  --font-headings: "Libre Caslon Text", serif;
+}
+
 :root {
-  --primary: #000000;
-  --secondary: #ffffff;
-  --accent: #fca311;
-  --card: #14213d;
-  --warning: #ce2029;
+  /* Brand colors */
+  --black: #000000;
+  --navy-blue: #14213d;
+  --yellow: #fca311;
+  --gray: #e5e5e5;
+  --white: #ffffff;
 }
 
 * {
@@ -20,7 +26,15 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  background-color: var(--primary);
-  color: var(--secondary);
-  font-family: "Inter", sans-serif;
+  background-color: var(--black);
+  color: var(--gray);
+  font-family: var(--font-main);
+}
+
+.active-link {
+  @apply text-(--yellow) font-bold underline;
+}
+
+.user-link {
+  @apply bg-(--navy-blue);
 }
