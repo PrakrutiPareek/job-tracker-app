@@ -1,13 +1,13 @@
 export default function ExperienceSelect({ value, onChange, error }) {
   return (
-    < >
+    <>
       <label className="block text-[#FFD58A] mb-3 text-md font-semibold">
         Experience Level
       </label>
       <select
         name="experience"
         value={value}
-        onChange={(e)=>{
+        onChange={(e) => {
           console.log("Experience Changed", e.target.value);
           onChange(e);
         }}
