@@ -77,20 +77,20 @@ export default function Profile() {
     <div className="px-4 sm:p-6 md:px-8 lg:px-56">
       {/* Header */}
 
-      <h1 className="text-[#FFD58A] text-2xl font-bold  mb-6 text-center md:text-left">
+      <h1 className="text-(--yellow) text-2xl font-bold  mb-6 text-center md:text-left">
         Profile Information
       </h1>
 
       {/* Card */}
 
-      <div className="bg-[#111D49] rounded-2xl p-4 sm:p-2 md:p-4">
+      <div className="bg-(--navy-blue) rounded-2xl p-4 sm:p-2 md:p-4">
         <ProfilePhotoSection />
 
-        <h2 className="text-[#FFD58A] text-xl font-semibold px-18 mb-6 mt-6 text-center md:text-left">
+        <h2 className="text-(--yellow) text-xl font-semibold px-18 mb-6 mt-6 text-center md:text-left">
           User Details
         </h2>
 
-        <form className="text-white text-md" onSubmit={handleSubmit}>
+        <form className="text-(--white) text-md" onSubmit={handleSubmit}>
           <div className="px-12 grid grid-cols-2 md:grid-cols-2 gap-4">
             {profileFields.slice(0, 2).map((field) => (
               <FormInput
@@ -135,8 +135,8 @@ export default function Profile() {
               className="
                 w-full
                 md:w-auto
-                bg-[#FFD58A]
-                text-black
+                bg-(--yellow)
+                text-(--black)
                 px-8
                 py-3
                 rounded
