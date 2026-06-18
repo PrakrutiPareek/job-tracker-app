@@ -16,11 +16,11 @@ export const validateProfileForm = (formData) => {
     errors.email = "Please enter a valid email";
   }
 
-  if (!formData.jobRole.trim()) {
-    errors.jobRole = "Job Role is required";
-  }
-  if (!formData.experience.trim()) {
-    errors.experience = "Please enter your total experience in years";
-  }
+  // if (!formData.jobRole.trim()) {
+  //   errors.jobRole = "Job Role is required";
+  // }
+  // if (!formData.experience.trim()) {
+  //   errors.experience = "Please enter your total experience in years";
+  // }
   return errors;
 };

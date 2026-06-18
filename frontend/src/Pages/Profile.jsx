@@ -25,15 +25,12 @@ export default function Profile() {
 
   // Handle input changes and clear errors for the changed field
   const handleChange = ({ target: { name, value } }) => {
-    console.log("Field:", name);
-  console.log("Value:", value);
-
     // Update form data, set hasChanges to true, and clear any existing error for the changed field
     setFormData((prev) => ({
       ...prev,
       [name]: value, // Update the specific field that changed
     }));
-    setHasChanges(true); 
+    setHasChanges(true);
 
     // Clear error for the changed field if it exists
     if (errors[name]) {
@@ -91,7 +88,8 @@ export default function Profile() {
         </h2>
 
         <form className="text-(--white) text-md" onSubmit={handleSubmit}>
-          <div className="px-12 grid grid-cols-2 md:grid-cols-2 gap-4">
+          <div className="px-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+     
             {profileFields.slice(0, 2).map((field) => (
               <FormInput
                 key={field.name}
@@ -117,14 +115,12 @@ export default function Profile() {
               {...profileFields[3]}
               value={formData.jobRole}
               onChange={handleChange}
-              error={errors.jobRole}
             />
           </div>
           <div className="mt-4 px-24">
             <ExperienceSelect
               value={formData.experience}
               onChange={handleChange}
-              error={errors.experience}
             />
           </div>
 

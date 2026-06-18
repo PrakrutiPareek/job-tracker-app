@@ -13,7 +13,7 @@ export default function ExperienceSelect({ value, onChange, error }) {
         }}
         className="w-full p-2 bg-[#E5E5E5] text-(--black) outline-none text-lg"
       >
-        <option value="">
+        <option  aria-label="Select experience level">
           Enter total experience in years
         </option>
 
