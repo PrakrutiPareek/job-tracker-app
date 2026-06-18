@@ -5,6 +5,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 9,
@@ -61,6 +69,7 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
   {
     id: 10,
@@ -68,5 +77,6 @@ export const mockApplications = [
     Company: "Spotify",
     Date: "13/06/2026",
     Location: "Remote",
+    Status: "Saved",
   },
 ];
