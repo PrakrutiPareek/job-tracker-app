@@ -1,11 +1,11 @@
 import {Link, NavLink} from "react-router-dom";
-import {SquareUser, LibraryBig, LayoutDashboard, LogOut} from "lucide-react";
+import {SquareUser, SearchCheck, SaveIcon, LogOut} from "lucide-react";
 
 const Sidebar = () => {
   const navLinks = [
     {path: "/profile", label: "Profile", end: true, icon: SquareUser},
-    {path: "/profile/applications", label: "Applications", icon: LibraryBig},
-    {path: "/profile/dashboard", label: "Dashboard", icon: LayoutDashboard},
+    {path: "/profile/jobsearch", label: "Job Search", icon: SearchCheck},
+    {path: "/profile/savedjobs", label: "Saved Jobs", icon: SaveIcon},
   ];
 
   return (

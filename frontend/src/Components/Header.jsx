@@ -5,8 +5,8 @@ const Header = () => {
   const navLinks = [
     {path: "/", label: "Home"},
     {path: "/profile", label: "Profile"},
-    {path: "/profile/dashboard", label: "Dashboard"},
-    {path: "/profile/applications", label: "Applications"},
+    {path: "/profile/jobsearch", label: "Job Search"},
+    {path: "/profile/savedjobs", label: "Saved Jobs"},
     {path: "/login", label: "Login"},
     {path: "/signup", label: "Signup"},
   ];
