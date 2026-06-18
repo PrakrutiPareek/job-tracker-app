@@ -1,10 +1,10 @@
 export const tableHeadings = [
-  "",
+  "No.",
   "Job Role",
   "Company",
   "Date",
   "Status",
   "Location",
-  "Link",
+  "Comment",
   "",
 ];
