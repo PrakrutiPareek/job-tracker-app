@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 //pages
 import Home from "./Pages/Home";
@@ -9,12 +9,13 @@ import Dashboard from "./Pages/Dashboard";
 import Applications from "./Pages/Applications";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //layouts
 import MainLayout from "./Components/MainLayout";
 import UserLayout from "./Components/UserLayout";
+import PageNotFound from "./Pages/PageNotFound";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         {/* Auth pages WITHOUT navbar/footer */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
