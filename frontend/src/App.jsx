@@ -19,8 +19,7 @@ import UserLayout from "./Components/UserLayout";
 function App() {
   return (
     <>
-      <ToastContainer position="top-right" />
-      // Add the ToastContainer component to enable toast notifications
+      <ToastContainer position="top-right" /> {/* Add the ToastContainer component to enable toast notifications */}
       <Routes>
         {/* MainLayout for Navbar */}
         <Route path="/" element={<MainLayout />}>
