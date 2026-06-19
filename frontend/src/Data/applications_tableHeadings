@@ -5,6 +5,6 @@ export const tableHeadings = [
   "Date",
   "Status",
   "Location",
-  "Comment",
+  "Notes",
   "",
 ];

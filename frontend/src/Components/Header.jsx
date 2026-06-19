@@ -6,7 +6,7 @@ const Header = () => {
     {path: "/", label: "Home"},
     {path: "/profile", label: "Profile"},
     {path: "/profile/jobsearch", label: "Job Search"},
-    {path: "/profile/savedjobs", label: "Saved Jobs"},
+    {path: "/profile/applicationTracker", label: "Application Tracker"},
     {path: "/login", label: "Login"},
     {path: "/signup", label: "Signup"},
   ];
