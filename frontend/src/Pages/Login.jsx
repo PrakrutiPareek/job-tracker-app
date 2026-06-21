@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [firebaseError, setFirebaseError] = useState("");
+  const navigate = useNavigate();
 
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -17,14 +22,17 @@ function Login() {
     const hasNumber = /[0-9]/.test(password);
     const hasSymbol = /[!@#$%^&*]/.test(password);
     return (
-      hasMinLength && hasUppercase && hasLowercase && hasNumber && hasSymbol
+      hasMinLength &&
+      hasUppercase &&
+      hasLowercase &&
+      hasNumber &&
+      hasSymbol
     );
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const newErrors = {};
 
-    // ✅ .trim() to avoid whitespace errors
     if (!email.trim()) {
       newErrors.email = "Email is required!";
     } else if (!validateEmail(email.trim())) {
@@ -43,8 +51,26 @@ function Login() {
       return;
     }
 
-    setErrors({});
-    console.log("Login successful");
+    try {
+      setErrors({});
+      setFirebaseError("");
+
+      // Firebase login
+     await signInWithEmailAndPassword(auth, email, password);
+
+console.log("Login successful!");
+
+// Redirect to dashboard
+navigate("/dashboard");
+
+      // Optional: clear form
+      setEmail("");
+      setPassword("");
+
+    } catch (error) {
+      console.error(error.message);
+      setFirebaseError(error.message);
+    }
   };
 
   return (
@@ -63,7 +89,6 @@ function Login() {
         className="w-[420px] p-12 rounded-xl"
         style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
       >
-        {/* Title */}
         <h1
           className="text-3xl font-bold text-center mb-8"
           style={{ color: "#f5a623", fontFamily: "Georgia, serif" }}
@@ -71,7 +96,13 @@ function Login() {
           Log in to your account
         </h1>
 
-        {/* Email input */}
+        {/* Firebase error */}
+        {firebaseError && (
+          <p className="text-red-400 text-sm mb-4 text-center">
+            {firebaseError}
+          </p>
+        )}
+
         <div className="mb-5">
           <label
             className="block mb-2 font-semibold"
@@ -86,14 +117,12 @@ function Login() {
             style={{ backgroundColor: "#e8e8e8" }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            aria-label="Email Address"
           />
           {errors.email && (
             <p className="text-red-400 text-sm mt-1">{errors.email}</p>
           )}
         </div>
 
-        {/* Password input */}
         <div className="mb-5">
           <label
             className="block mb-2 font-semibold"
@@ -108,7 +137,6 @@ function Login() {
             style={{ backgroundColor: "#e8e8e8" }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            aria-label="Password"
           />
           <p className="text-xs mt-1" style={{ color: "#aaaaaa" }}>
             Minimum 8 characters with uppercase, lowercase, number and symbol.
@@ -118,18 +146,19 @@ function Login() {
           )}
         </div>
 
-        {/* Remember me + Forgot password */}
         <div className="flex justify-between items-center mb-5">
           <label className="flex items-center gap-2 text-white text-sm">
             <input type="checkbox" className="accent-yellow-500" />
             Remember me
           </label>
-          <span className="text-sm cursor-pointer" style={{ color: "#f5a623" }}>
+          <span
+            className="text-sm cursor-pointer"
+            style={{ color: "#f5a623" }}
+          >
             Forgot Password?
           </span>
         </div>
 
-        {/* Login button */}
         <button
           type="submit"
           className="w-full p-3 rounded-lg font-bold text-black"
@@ -138,17 +167,14 @@ function Login() {
           Log In
         </button>
 
-        {/* Divider */}
         <hr className="my-5 border-gray-600" />
 
-        {/* Sign up link */}
         <p className="text-center text-sm">
           <Link to="/signup" style={{ color: "#f5a623" }}>
             No account yet? Sign Up
           </Link>
         </p>
 
-        {/* Back to home */}
         <Link
           to="/"
           className="block text-center mt-4 text-2xl"
