@@ -23,8 +23,6 @@ const getJobs = async (keyword, location) => {
     throw error;
   }
 };
-console.log("APP_ID:", process.env.ADZUNA_APP_ID);
-console.log("APP_KEY:", process.env.ADZUNA_APP_KEY);
 
 module.exports = {
   getJobs,

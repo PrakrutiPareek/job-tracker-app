@@ -7,7 +7,6 @@ const SearchBar = ({
   setLocation,
   onSearch,
 }) => {
-  console.log("keyword", keyword);
   return (
     <div className="bg-(--navy-blue) rounded-2xl flex items-center p-4">
       <input
