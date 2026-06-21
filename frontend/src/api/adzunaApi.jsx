@@ -1,0 +1,13 @@
+import axios from "axios";
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+export const fetchJobListings = async (keyword, location) => {
+ const response = await axios.get(
+    `${API_URL}/api/jobs/search`, {
+    params: {
+      keyword,
+      location,
+    },
+  });
+
+  return response.data;
+};

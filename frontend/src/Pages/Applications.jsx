@@ -37,7 +37,7 @@ const Applications = () => {
   return (
     <main className="mt-7 mx-11.75">
       <div className="mb-10.5 text-(--yellow)">
-        <h1 className="text-[28px] font-bold font-headings">Saved Jobs</h1>
+        <h1 className="text-[28px] font-bold font-headings">Saved  Jobs</h1>
         <p>Take control of your job search!</p>
       </div>
 
