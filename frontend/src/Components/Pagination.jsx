@@ -3,6 +3,8 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 
   return (
     <div className="flex items-center justify-center gap-2 mt-6">
+      
+      {/* Previous */}
       <button
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
@@ -16,6 +18,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         Previous
       </button>
 
+      {/* Page Numbers */}
       {Array.from({ length: totalPages }, (_, index) => {
         const pageNumber = index + 1;
 
@@ -26,7 +29,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
             onClick={() => onPageChange(pageNumber)}
             className={`px-4 py-2 rounded-md border text-sm font-medium ${
               currentPage === pageNumber
-                ? "bg-blue-600 text-white"
+                ? "bg-(--yellow) text-black"  // ✅ feedback applied correctly
                 : "bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >
@@ -35,6 +38,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         );
       })}
 
+      {/* Next */}
       <button
         type="button"
         onClick={() => onPageChange(currentPage + 1)}
@@ -47,6 +51,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
       >
         Next
       </button>
+
     </div>
   );
 }
