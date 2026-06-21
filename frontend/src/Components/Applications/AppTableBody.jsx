@@ -9,6 +9,7 @@ const AppTableBody = ({jobs, onStatusChange}) => {
           <td>{job.jobrole}</td>
           <td>{job.Company}</td>
           <td>{job.Date}</td>
+          <td>{job.Location}</td>
           <td>
             <select
               value={job.status}
@@ -24,7 +25,20 @@ const AppTableBody = ({jobs, onStatusChange}) => {
               <option value="Rejected">Rejected</option>
             </select>
           </td>
-          <td>{job.Location}</td>
+
+          <td>
+            <select
+              value={job.source}
+              className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
+            >
+              <option value="Adzuna">Adzuna</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Indeed">Indeed</option>
+              <option value="CV-Library">CV-Library</option>
+              <option value="Company-site">Company-site</option>
+              <option value="Other">Other</option>
+            </select>
+          </td>
           <td>
             <input type="textarea" placeholder="Notes.." />
           </td>

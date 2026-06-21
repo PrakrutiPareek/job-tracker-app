@@ -2,19 +2,14 @@ import {useState} from "react";
 import {Link} from "react-router-dom";
 import {mockApplications} from "../Data/mockApplications";
 
-import AppTableBody from "../Components/AppTableBody";
-import AppTableHeads from "../Components/AppTableHeads";
-import AppCardGrid from "../Components/AppCardGrid";
+import AppTableBody from "../Components/Applications/AppTableBody";
+import AppTableHeads from "../Components/Applications/AppTableHeads";
+import AppCardGrid from "../Components/Applications/AppCardGrid";
+import ManualApplicationForm from "../Components/Applications/ManualApplicationForm";
 
 const Applications = () => {
   const [jobs, setJobs] = useState(mockApplications);
-
-  const handleStatusChange = (id, updatedStatus) => {
-    const updated = jobs.map((job) =>
-      job.id === id ? {...job, status: updatedStatus} : job,
-    );
-    setJobs(updated);
-  };
+  const [showForm, setShowForm] = useState(false);
 
   const statusCounts = {
     Saved: 0,
@@ -24,16 +19,25 @@ const Applications = () => {
     Rejected: 0,
   };
 
+  const totalJobs = jobs.length;
+
+  const handleStatusChange = (id, updatedStatus) => {
+    const updated = jobs.map((job) =>
+      job.id === id ? {...job, status: updatedStatus} : job,
+    );
+    setJobs(updated);
+  };
+
   jobs.forEach((job) => {
     statusCounts[job.status]++;
   });
-
-  const totalJobs = jobs.length;
 
   const getPercentage = (statusCounts) => {
     if (totalJobs === 0) return 0;
     return Math.round((statusCounts / totalJobs) * 100);
   };
+
+  const handleFormSubmit = () => console.log("Form is submitted");
 
   return (
     <main className="mt-7 mx-11.75">
@@ -44,15 +48,24 @@ const Applications = () => {
           </h1>
           <p>Take control of your job search!</p>
         </div>
-        <Link
-          to={"/profile/jobsearch"}
+        <button
+          onClick={() => setShowForm(true)}
           className="bg-(--yellow) text-(--black) px-4 py-3 rounded-xl font-bold transition-transform active:scale-90"
         >
           + Add Application
-        </Link>
+        </button>
       </div>
+      <ManualApplicationForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSubmit={handleFormSubmit}
+      />
 
-      <AppCardGrid statusCounts={statusCounts} getPercentage={getPercentage} />
+      <AppCardGrid
+        statusCounts={statusCounts}
+        getPercentage={getPercentage}
+        totalJobs={jobs.length}
+      />
 
       <div className="overflow-hidden rounded-xl mt-8">
         <table className="bg-(--navy-blue) w-full">

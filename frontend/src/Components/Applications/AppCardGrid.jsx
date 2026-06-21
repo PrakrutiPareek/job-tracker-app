@@ -1,13 +1,9 @@
 import AppCard from "./AppCard";
 
-const AppCardGrid = ({statusCounts, getPercentage}) => {
+const AppCardGrid = ({statusCounts, getPercentage, totalJobs}) => {
   return (
     <div className="grid grid-cols-5 gap-6">
-      <AppCard
-        name="Saved"
-        statusCounts={statusCounts.Saved}
-        percentage={getPercentage(statusCounts.Saved)}
-      />
+      <AppCard name="Total Jobs" statusCounts={totalJobs} />
       <AppCard
         name="Applied"
         statusCounts={statusCounts.Applied}
