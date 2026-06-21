@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { mockApplications } from "../Data/mockApplications";
+import {useState} from "react";
+import {Link} from "react-router-dom";
+import {mockApplications} from "../Data/mockApplications";
 
 import AppTableBody from "../Components/AppTableBody";
 import AppTableHeads from "../Components/AppTableHeads";
@@ -49,12 +50,19 @@ const Applications = () => {
 
   return (
     <main className="mt-7 mx-11.75">
-      <div className="mb-10.5 text-(--yellow)">
-        <h1 className="text-[28px] font-bold font-headings">
-          Saved Jobs
-        </h1>
-        <p>Take control of your job search!</p>
-      </div>
+      <div className="flex justify-between items-center mb-10.5 text-(--yellow)">
+        <div>
+          <h1 className="text-[28px] font-bold font-headings">
+            Application Tracker
+          </h1>
+          <p>Take control of your job search!</p>
+        </div>
+        <Link
+          to={"/profile/jobsearch"}
+          className="bg-(--yellow) text-(--black) px-4 py-3 rounded-xl font-bold transition-transform active:scale-90"
+        >
+          + Add Application
+        </Link>
 
       <AppCardGrid
         statusCounts={statusCounts}

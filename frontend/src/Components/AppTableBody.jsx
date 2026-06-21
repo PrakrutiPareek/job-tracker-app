@@ -1,4 +1,4 @@
-import {PenBox} from "lucide-react";
+import {PenBox, Trash2} from "lucide-react";
 
 const AppTableBody = ({jobs, onStatusChange}) => {
   return (
@@ -15,6 +15,7 @@ const AppTableBody = ({jobs, onStatusChange}) => {
               onChange={(e) => {
                 return onStatusChange(job.id, e.target.value);
               }}
+              className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
             >
               <option value="Saved">Saved</option>
               <option value="Applied">Applied</option>
@@ -28,7 +29,7 @@ const AppTableBody = ({jobs, onStatusChange}) => {
             <input type="textarea" placeholder="Notes.." />
           </td>
           <td>
-            <PenBox size={10} />
+            <Trash2 size={20} />
           </td>
         </tr>
       ))}

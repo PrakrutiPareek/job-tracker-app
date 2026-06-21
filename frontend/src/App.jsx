@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Profile from "./Pages/Profile";
-import SavedJobs from "./Pages/Applications";
+import ApplicationTracker from "./Pages/Applications";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import JobSearch from "./Pages/JobSearch";
@@ -32,7 +32,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="jobsearch" element={<JobSearch />} />
-          <Route path="savedjobs" element={<SavedJobs />} />
+          <Route path="applicationTracker" element={<ApplicationTracker />} />
         </Route>
 
         {/* UserLayout routes - sidebar */}
