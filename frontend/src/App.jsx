@@ -1,6 +1,6 @@
 import {Routes, Route} from "react-router-dom";
 
-//pages
+// pages
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -9,23 +9,25 @@ import ApplicationTracker from "./Pages/Applications";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import JobSearch from "./Pages/JobSearch";
-import {ToastContainer} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Dashboard from "./Pages/Dashboard";
+import PageNotFound from "./Pages/PageNotFound";
 
-//layouts
+// layouts
 import MainLayout from "./Components/MainLayout";
 import UserLayout from "./Components/UserLayout";
-import PageNotFound from "./Pages/PageNotFound";
+
+// toast notifications
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
-      <ToastContainer position="top-right" />{" "}
-      {/* Add the ToastContainer component to enable toast notifications */}
+      <ToastContainer position="top-right" />
+
       <Routes>
-        {/* MainLayout for Navbar */}
+        {/* MainLayout routes - navbar/footer */}
         <Route path="/" element={<MainLayout />}>
-          {/* Auth pages WITH navbar/footer */}
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
@@ -33,16 +35,18 @@ function App() {
           <Route path="applicationTracker" element={<ApplicationTracker />} />
         </Route>
 
-        {/* UserLayout for Sidebar */}
+        {/* UserLayout routes - sidebar */}
         <Route path="/profile" element={<UserLayout />}>
           <Route index element={<Profile />} />
           <Route path="jobsearch" element={<JobSearch />} />
           <Route path="applicationTracker" element={<ApplicationTracker />} />
         </Route>
 
-        {/* Auth pages WITHOUT navbar/footer */}
+        {/* Auth pages - no navbar/footer */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
+        {/* Fallback */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
