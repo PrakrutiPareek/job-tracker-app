@@ -13,11 +13,6 @@ const SearchBar = ({
       <input
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            onSearch();
-          }
-        }}
         placeholder="Search by Role"
         className="bg-transparent flex-1 outline-none"
       />
@@ -26,11 +21,6 @@ const SearchBar = ({
       <input
         value={location}
         onChange={(e) => setLocation(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            onSearch();
-          }
-        }}
         placeholder="Search jobs in UK only"
         className="bg-transparent flex-1 outline-none"
       />
