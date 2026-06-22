@@ -3,7 +3,7 @@ import {X} from "lucide-react";
 
 const ManualApplicationForm = ({isOpen, onClose, onSubmit}) => {
   const [formData, setFormData] = useState({
-    jobrole: "",
+    jobRole: "",
     company: "",
     date: "",
     source: "",
@@ -25,7 +25,7 @@ const ManualApplicationForm = ({isOpen, onClose, onSubmit}) => {
     onSubmit(formData);
 
     setFormData({
-      jobrole: "",
+      jobRole: "",
       company: "",
       date: "",
       source: "",
@@ -53,13 +53,13 @@ const ManualApplicationForm = ({isOpen, onClose, onSubmit}) => {
           </button>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col">
-          <label htmlFor="jobrole">
+          <label htmlFor="jobRole">
             Job Role <span className="text-red-600 font-bold">*</span>
           </label>
           <input
             type="text"
-            name="jobrole"
-            value={formData.jobrole}
+            name="jobRole"
+            value={formData.jobRole}
             onChange={handleChange}
             required
             className="w-full border border-(--yellow) rounded-md p-2 mb-3"

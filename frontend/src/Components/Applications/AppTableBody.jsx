@@ -6,10 +6,10 @@ const AppTableBody = ({jobs, onStatusChange}) => {
       {jobs.map((job) => (
         <tr key={job.id} className="[&>td]:px-3 [&>td]:py-4">
           <td>{job.id}</td>
-          <td>{job.jobrole}</td>
-          <td>{job.Company}</td>
-          <td>{job.Date}</td>
-          <td>{job.Location}</td>
+          <td>{job.jobRole}</td>
+          <td>{job.company}</td>
+          <td>{job.date}</td>
+          <td>{job.location}</td>
           <td>
             <select
               value={job.status}
@@ -29,6 +29,9 @@ const AppTableBody = ({jobs, onStatusChange}) => {
           <td>
             <select
               value={job.source}
+              onChange={(e) => {
+                return onStatusChange(job.id, e.target.value);
+              }}
               className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
             >
               <option value="Adzuna">Adzuna</option>

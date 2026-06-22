@@ -9,7 +9,7 @@ import ApplicationTracker from "./Pages/Applications";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import JobSearch from "./Pages/JobSearch";
-import Dashboard from "./Pages/Dashboard";
+// import Dashboard from "./Pages/Dashboard";
 import PageNotFound from "./Pages/PageNotFound";
 
 // layouts
