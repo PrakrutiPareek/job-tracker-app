@@ -2,20 +2,19 @@ import {useState} from "react";
 import {Link} from "react-router-dom";
 import {mockApplications} from "../Data/mockApplications";
 
-import AppTableBody from "../Components/AppTableBody";
-import AppTableHeads from "../Components/AppTableHeads";
-import AppCardGrid from "../Components/AppCardGrid";
-import Pagination from "../Components/Pagination"; //    
+import AppTableBody from "../Components/Applications/AppTableBody";
+import AppTableHeads from "../Components/Applications/AppTableHeads";
+import AppCardGrid from "../Components/Applications/AppCardGrid";
+import ManualApplicationForm from "../Components/Applications/ManualApplicationForm";
+import Pagination from "../Components/Pagination";
+import EmptyAppState from "../Components/Applications/EmptyAppState";
 
 const Applications = () => {
+  //Mock jobs state
   const [jobs, setJobs] = useState(mockApplications);
 
-  const handleStatusChange = (id, updatedStatus) => {
-    const updated = jobs.map((job) =>
-      job.id === id ? { ...job, status: updatedStatus } : job
-    );
-    setJobs(updated);
-  };
+  //Manual job entry form state
+  const [showForm, setShowForm] = useState(false);
 
   //  Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +27,17 @@ const Applications = () => {
 
   const currentJobs = jobs.slice(startIndex, endIndex);
 
-  //  stats (unchanged logic)
+  const totalJobs = jobs.length;
+
+  // handling status change
+  const handleStatusChange = (id, updatedStatus) => {
+    const updated = jobs.map((job) =>
+      job.id === id ? {...job, status: updatedStatus} : job,
+    );
+    setJobs(updated);
+  };
+
+  //  appcards stat calculations
   const statusCounts = {
     Saved: 0,
     Applied: 0,
@@ -36,20 +45,19 @@ const Applications = () => {
     Offer: 0,
     Rejected: 0,
   };
-
   jobs.forEach((job) => {
     statusCounts[job.status]++;
   });
-
-  const totalJobs = jobs.length;
-
-  const getPercentage = (count) => {
+  const getPercentage = (statusCounts) => {
     if (totalJobs === 0) return 0;
-    return Math.round((count / totalJobs) * 100);
+    return Math.round((statusCounts / totalJobs) * 100);
   };
 
+  //handling form submission
+  const handleFormSubmit = () => console.log("Form is submitted");
+
   return (
-    <main className="mt-7 mx-11.75">
+    <main className="mt-7 mx-11.75 flex flex-col">
       <div className="flex justify-between items-center mb-10.5 text-(--yellow)">
         <div>
           <h1 className="text-[28px] font-bold font-headings">
@@ -57,36 +65,53 @@ const Applications = () => {
           </h1>
           <p>Take control of your job search!</p>
         </div>
-        <Link
-          to={"/profile/jobsearch"}
-          className="bg-(--yellow) text-(--black) px-4 py-3 rounded-xl font-bold transition-transform active:scale-90"
+        <button
+          onClick={() => setShowForm(true)}
+          className="bg-(--yellow) text-(--black) px-4 py-3 rounded-xl font-bold transition-transform active:scale-90 hover:scale-105 hover:text-(--white)"
         >
           + Add Application
-        </Link>
+        </button>
+      </div>
+      {/* Manual entry form */}
+      <ManualApplicationForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSubmit={handleFormSubmit}
+      />
 
+      {/* Stat cards */}
       <AppCardGrid
         statusCounts={statusCounts}
         getPercentage={getPercentage}
+        totalJobs={jobs.length}
       />
 
-      <div className="overflow-hidden rounded-xl mt-8">
-        <table className="bg-(--navy-blue) w-full">
-          <AppTableHeads />
+      {/* Empty states - when no jobs are available 
+      =============OR===============
+      Application Tracker table */}
+      {totalJobs === 0 ? (
+        <EmptyAppState />
+      ) : (
+        <div className="overflow-hidden rounded-xl mt-8">
+          <table className="bg-(--navy-blue) w-full">
+            <AppTableHeads />
 
-          {/*   use paginated jobs */}
-          <AppTableBody
-            jobs={currentJobs}
-            onStatusChange={handleStatusChange}
-          />
-        </table>
-      </div>
+            <AppTableBody
+              jobs={currentJobs}
+              onStatusChange={handleStatusChange}
+            />
+          </table>
+        </div>
+      )}
 
       {/*  Replace placeholder with actual Pagination */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
+      {totalJobs > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
     </main>
   );
 };

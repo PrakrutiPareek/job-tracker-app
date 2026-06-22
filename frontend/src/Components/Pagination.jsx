@@ -1,9 +1,8 @@
-function Pagination({ currentPage, totalPages, onPageChange }) {
+function Pagination({currentPage, totalPages, onPageChange}) {
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-6">
-      
+    <div className="flex gap-2 my-12 fixed bottom-0 left-64 right-0 justify-center">
       {/* Previous */}
       <button
         type="button"
@@ -19,7 +18,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
       </button>
 
       {/* Page Numbers */}
-      {Array.from({ length: totalPages }, (_, index) => {
+      {Array.from({length: totalPages}, (_, index) => {
         const pageNumber = index + 1;
 
         return (
@@ -29,7 +28,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
             onClick={() => onPageChange(pageNumber)}
             className={`px-4 py-2 rounded-md border text-sm font-medium ${
               currentPage === pageNumber
-                ? "bg-(--yellow) text-black"  // ✅ feedback applied correctly
+                ? "bg-(--yellow) text-black" // ✅ feedback applied correctly
                 : "bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >
@@ -51,7 +50,6 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
       >
         Next
       </button>
-
     </div>
   );
 }
