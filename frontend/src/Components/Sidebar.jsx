@@ -4,13 +4,17 @@ import {SquareUser, SearchCheck, SaveIcon, LogOut} from "lucide-react";
 const Sidebar = () => {
   const navLinks = [
     {path: "/profile", label: "Profile", end: true, icon: SquareUser},
+    {
+      path: "/profile/applicationTracker",
+      label: "Application Tracker",
+      icon: SaveIcon,
+    },
     {path: "/profile/jobsearch", label: "Job Search", icon: SearchCheck},
-    {path: "/profile/savedjobs", label: "Saved Jobs", icon: SaveIcon},
   ];
 
   return (
     <aside
-      className="w-[256px] border-r h-screen flex flex-col"
+      className="w-[256px] border-r rounded-3xl h-screen flex flex-col sticky top-0"
       aria-label="Secondary navigation"
     >
       <Link

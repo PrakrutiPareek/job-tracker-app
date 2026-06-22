@@ -1,4 +1,4 @@
-import {tableHeadings} from "../Data/applications_tableHeadings";
+import {tableHeadings} from "../../constants/applications_tableHeadings";
 
 const AppTableHeads = () => {
   return (

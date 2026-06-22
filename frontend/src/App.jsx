@@ -1,15 +1,15 @@
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 // pages
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Profile from "./Pages/Profile";
-import SavedJobs from "./Pages/Applications";
+import ApplicationTracker from "./Pages/Applications";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import JobSearch from "./Pages/JobSearch";
-import Dashboard from "./Pages/Dashboard";
+// import Dashboard from "./Pages/Dashboard";
 import PageNotFound from "./Pages/PageNotFound";
 
 // layouts
@@ -17,7 +17,7 @@ import MainLayout from "./Components/MainLayout";
 import UserLayout from "./Components/UserLayout";
 
 // toast notifications
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -32,20 +32,14 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="jobsearch" element={<JobSearch />} />
-          <Route path="savedjobs" element={<SavedJobs />} />
+          <Route path="applicationTracker" element={<ApplicationTracker />} />
         </Route>
 
         {/* UserLayout routes - sidebar */}
         <Route path="/profile" element={<UserLayout />}>
           <Route index element={<Profile />} />
           <Route path="jobsearch" element={<JobSearch />} />
-          <Route path="savedjobs" element={<SavedJobs />} />
-        </Route>
-
-        <Route path="/dashboard" element={<UserLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="jobsearch" element={<JobSearch />} />
-          <Route path="savedjobs" element={<SavedJobs />} />
+          <Route path="applicationTracker" element={<ApplicationTracker />} />
         </Route>
 
         {/* Auth pages - no navbar/footer */}

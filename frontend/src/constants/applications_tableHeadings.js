@@ -3,8 +3,9 @@ export const tableHeadings = [
   "Job Role",
   "Company",
   "Date",
-  "Status",
   "Location",
-  "Comment",
+  "Status",
+  "Source",
+  "Notes",
   "",
 ];
