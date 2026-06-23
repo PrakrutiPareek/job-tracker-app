@@ -8,7 +8,6 @@ export default function ExperienceSelect({ value, onChange, error }) {
         name="experience"
         value={value}
         onChange={(e) => {
-          console.log("Experience Changed", e.target.value);
           onChange(e);
         }}
         className="w-full p-2 bg-[#E5E5E5] text-(--black) outline-none text-lg"

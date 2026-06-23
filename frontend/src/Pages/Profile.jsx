@@ -55,8 +55,6 @@ export default function Profile() {
     try {
       setLoading(true);
 
-      console.log("Profile Saved", formData);
-
       // TODO: API Call
 
       toast.success("Profile updated successfully!");
