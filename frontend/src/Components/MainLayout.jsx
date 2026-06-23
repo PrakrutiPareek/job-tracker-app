@@ -1,15 +1,30 @@
 import Header from "./Header";
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 
-const Layout = () => {
+/*
+ * ===== Main Layout =====
+ *
+ * Purpose:
+ * - Shared layout for public pages
+ *
+ * Displays:
+ * - Header
+ * - Page content
+ * - Footer
+ */
+const MainLayout = () => {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header />
-      <Outlet />
+
+      <main className="flex-1">
+        <Outlet />
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 };
 
-export default Layout;
+export default MainLayout;
