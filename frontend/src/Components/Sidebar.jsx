@@ -5,11 +5,11 @@ const Sidebar = () => {
   const navLinks = [
     {path: "/profile", label: "Profile", end: true, icon: SquareUser},
     {
-      path: "/profile/applicationTracker",
-      label: "Application Tracker",
+      path: "/profile/applications",
+      label: "Applications",
       icon: SaveIcon,
     },
-    {path: "/profile/jobsearch", label: "Job Search", icon: SearchCheck},
+    {path: "/profile/jobSearch", label: "Job Search", icon: SearchCheck},
   ];
 
   return (

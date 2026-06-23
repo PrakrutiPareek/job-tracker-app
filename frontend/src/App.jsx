@@ -16,7 +16,7 @@ import MainLayout from "./Components/MainLayout";
 import UserLayout from "./Components/UserLayout";
 
 // Toast Notifications
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
         {/* UserLayout routes - sidebar */}
         <Route path="/profile" element={<UserLayout />}>
           <Route index element={<Profile />} />
-          <Route path="jobsearch" element={<JobSearch />} />
+          <Route path="jobSearch" element={<JobSearch />} />
           <Route path="applications" element={<Applications />} />
         </Route>
 

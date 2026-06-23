@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Button from "./Button";
 import logo from "../assets/images/logo-icon.png";
 
@@ -9,13 +9,13 @@ import logo from "../assets/images/logo-icon.png";
  * - Display the JobEase logo
  * - Display the main navigation
  * - Provide access to authentication pages
-*/
+ */
 
 /* Public navigation */
 const navLinks = [
-  { path: "/", label: "HOME" },
-  { path: "/signup", label: "PROFILE" },
-  { path: "/signup", label: "APPLICATIONS" },
+  {path: "/", label: "HOME"},
+  {path: "/profile", label: "PROFILE"},
+  {path: "/profile/applications", label: "APPLICATIONS"},
 ];
 
 const Header = () => {
@@ -44,14 +44,12 @@ const Header = () => {
           className="flex flex-wrap items-center justify-center gap-6 md:gap-8"
           aria-label="Primary Navigation"
         >
-          {navLinks.map(({ path, label }) => (
+          {navLinks.map(({path, label}) => (
             <NavLink
               key={label}
               to={path}
-              className={({ isActive }) =>
-                isActive
-                  ? "font-main font-semibold text-(--yellow)"
-                  : "font-main font-semibold text-white transition-colors duration-200 hover:text-(--yellow)"
+              className={({isActive}) =>
+                `font-main font-semibold ${isActive ? "active-link" : null}`
               }
             >
               {label}

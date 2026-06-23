@@ -42,14 +42,12 @@ const ManualApplicationForm = ({isOpen, onClose, onSubmit}) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/50 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/80 p-4">
       <div className="w-full max-w-2xl rounded-xl bg-(--navy-blue) p-6 shadow-xl">
         <div className="flex justify-between mb-2">
-          <h2 className="text-3xl font-extrabold text-(--white)">
-            Add Application
-          </h2>
+          <h2 className="text-3xl font-extrabold">Add Application</h2>
           <button onClick={onClose}>
-            <X size={20} className="" />
+            <X size={20} />
           </button>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col">
