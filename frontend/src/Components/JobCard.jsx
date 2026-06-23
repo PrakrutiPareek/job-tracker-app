@@ -5,7 +5,7 @@ const JobCard = ({ job }) => {
     <div className="rounded-xl border border-slate-700 p-5 shadow-sm
       transition-transform hover:-translate-y-1">
       <span className="rounded-full bg-(--navy-blue) px-3 py-1 text-sm
-        font-medium text-(--blue)">
+        font-medium text-(--navy-blue)">
         {company.display_name}
       </span>
 
