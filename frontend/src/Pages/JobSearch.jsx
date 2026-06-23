@@ -15,7 +15,13 @@ const JobSearch = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Handle search function
   const handleSearch = async () => {
+    if(!keyword.trim() && !location.trim()) {
+      setJobs([]);
+      setError("Please enter a keyword or location to search.");
+      return;
+    }
     try {
       setLoading(true);
       setError("");
