@@ -32,7 +32,7 @@ body {
 }
 
 .active-link {
-  @apply text-(--yellow) font-bold underline;
+  @apply text-(--yellow) font-bold;
 }
 
 .user-link {
