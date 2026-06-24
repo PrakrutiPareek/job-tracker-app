@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {Link} from "react-router-dom";
 import {mockApplications} from "../Data/mockApplications";
 
 import AppTableBody from "../Components/Applications/AppTableBody";
@@ -57,11 +56,11 @@ const Applications = () => {
   const handleFormSubmit = () => console.log("Form is submitted");
 
   return (
-    <main className="mt-7 mx-11.75 flex flex-col">
-      <div className="flex justify-between items-center mb-10.5 text-(--yellow)">
+    <main className="mt-10 mx-12 flex flex-col">
+      <div className="flex justify-between items-center mb-10">
         <div>
-          <h1 className="text-[28px] font-bold font-headings">
-            Application Tracker
+          <h1 className="text-[28px] font-bold font-headings text-(--yellow)">
+            Applications
           </h1>
           <p>Take control of your job search!</p>
         </div>

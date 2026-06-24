@@ -1,7 +1,15 @@
-export default function FormInput({label, name, placeholder, type, value, onChange, error}) {
+export default function FormInput({
+  label,
+  name,
+  placeholder,
+  type,
+  value,
+  onChange,
+  error,
+}) {
   return (
     <div className="mt-4 px-12">
-      <label className="block text-[#FFD58A] mb-3 text-md font-semibold">
+      <label className="block text-(--yellow) mb-3 text-md font-semibold">
         {label}
       </label>
 

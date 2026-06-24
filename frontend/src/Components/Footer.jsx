@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 /*
  * Footer Component
@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
  */
 
 const footerLinks = [
-  { path: "/about", label: "About" },
-  { path: "/contact", label: "Contact" },
+  {path: "/about", label: "About"},
+  {path: "/contact", label: "Contact"},
 ];
 
 const Footer = () => {
@@ -22,14 +22,16 @@ const Footer = () => {
           aria-label="Footer Navigation"
           className="flex flex-wrap justify-center gap-6 font-main font-semibold"
         >
-          {footerLinks.map(({ path, label }) => (
-            <Link
+          {footerLinks.map(({path, label}) => (
+            <NavLink
               key={label}
               to={path}
-              className="text-white transition-colors hover:text-(--yellow)"
+              className={({isActive}) =>
+                `font-main font-semibold ${isActive ? "active-link" : null}`
+              }
             >
               {label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
