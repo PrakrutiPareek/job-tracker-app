@@ -14,7 +14,11 @@ import logo from "../assets/images/logo-icon.png";
 const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
   const navLinks = [
     { path: "/profile", label: "Profile", end: true, icon: SquareUser },
-    { path: "/profile/applications", label: "Applications", icon: SaveIcon },
+    {
+      path: "/profile/applications",
+      label: "Application Tracker",
+      icon: SaveIcon,
+    },
     { path: "/profile/jobsearch", label: "Job Search", icon: SearchCheck },
   ];
 
@@ -41,8 +45,11 @@ const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
         className="flex items-center gap-2 border-b-2 border-(--navy-blue) p-10 text-4xl font-bold text-(--yellow)"
         onClick={onClose}
       >
-        <img src={logo} alt="JobEase Logo" className="h-10 w-auto object-contain" />
-
+        <img
+          src={logo}
+          alt="JobEase Logo"
+          className="h-10 w-auto object-contain"
+        />
         <span className="font-headings">JobEase</span>
       </Link>
 
@@ -59,7 +66,7 @@ const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
               aria-current={({ isActive }) => (isActive ? "page" : undefined)}
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-xl px-2 py-3 ${
-                  isActive ? "user-link" : null
+                  isActive ? "user-link" : ""
                 }`
               }
             >
