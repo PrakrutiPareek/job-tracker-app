@@ -1,57 +1,51 @@
-// Import the icon from lucide
-import monique from "../assets/About_Images/monique1.png";
-import nisha from "../assets/About_Images/nisha1.png";
-import prakruti from "../assets/About_Images/prakruti1.png";
-import sonam from "../assets/About_Images/sonam1.png";
-import tara from "../assets/About_Images/tara1.png";
-
 // Team members information: id, name and bio
 const teamMembers = [
   {
     id: 1,
-    initials: monique,
     name: "Monique",
-    bio: "I am a Law and Healthcare graduate who has recently returned to the healthcare sector after working as a paralegal. I have always had an interest in technology and started to learn to code during maternity leave and I have enjoyed developing my technical skills.",
+    initials: "MK",
+    bio: "Hi, I am Monique and I started learning to code during maternity leave this motivated me to apply to CFG",
   },
   {
     id: 2,
-    initials: nisha,
     name: "Nisha",
+    initials: "NR",
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget semper elit.",
   },
   {
     id: 3,
-    initials: prakruti,
     name: "Prakruti",
-    bio: "Hi I am a Frontend Developer, Science graduate and mother of two sweethearts. Currently learning full stack with CFGDegree.",
+    initials: "PP",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget semper elit.",
   },
   {
     id: 4,
-    initials: sonam,
     name: "Sonam",
-    bio: "I work as a Frontend Developer & enjoy building web applications. I am always interested in learning new things and improving my technical skills.",
+    initials: "SJ",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget semper elit.",
   },
   {
     id: 5,
-    initials: tara,
     name: "Tara",
-    bio: "I'm a Full Stack Developer with a degree in BSc Computing & IT and Business. I've been actively building my programming skills through a range of online courses to further strengthen my skills and gain practical experience.",
+    initials: "TO",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget semper elit.",
   },
 ];
 
 const About = () => {
   return (
     // Page background
-    <main className="bg-(--black) py-10 px-4 font-headings">
+    <main className="min-h-screen bg-(--black) py-16 px-4">
       {/* Page heading */}
-      <div className="text-center mb-8">
+      <div className="text-center mb-12">
         {/* Page title */}
-        <h1 className="text-(--yellow) uppercase font-bold tracking-widest text-3xl mb-2">
+        <h1 className="font-headings text-(--yellow) uppercase font-bold tracking-widest text-3xl mb-4">
+          {" "}
           Meet the team
         </h1>
 
         {/* Page paragraph with description of the app */}
-        <p className="text-(--gray) max-w-3xl mx-auto text-base">
+        <p className="text-(--gray) max-w-2xl mx-auto text-base">
           Code First Girls(CFG) Degree alumni who are passionate about
           development. We created this simple react web app to help others stay
           organised to track their job application progress.
@@ -59,23 +53,19 @@ const About = () => {
       </div>
 
       {/* Team members cards loop using teamMembers array and creates a card for each member */}
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-6 mb-16">
         {teamMembers.map((member) => (
           // Team member cards with effect on hover
           <div
             key={member.id}
-            className="bg-(--navy-blue) rounded-xl w-65 overflow-hidden hover:opacity-50 transition-opacity duration-300"
+            className="bg-(--navy-blue) rounded-xl w-48 overflow-hidden hover:opacity-50 transition-opacity duration-300"
           >
             {/* Photo placeholder for each member using icon from lucide-react */}
-            <div
-              className="w-full h-30"
-              style={{
-                backgroundImage: `url(${member.initials})`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            ></div>
+            <div className="w-full h-36 bg-gray-500 flex items-center justify-center">
+              <div className="text-white text-4xl font-bold font-headings">
+                {member.initials}
+              </div>
+            </div>
 
             {/* Card information */}
             <div className="p-4">
@@ -92,13 +82,6 @@ const About = () => {
           </div>
         ))}
       </div>
-
-      {/* Bottom tagline */}
-      {/* <div className="bg-(--black) text-center py-6 border-t border-gray-800">
-        <p className="text-(--yellow) font-bold text-xl">
-          Start feeling at ease with JobEase
-        </p>
-      </div> */}
     </main>
   );
 };
