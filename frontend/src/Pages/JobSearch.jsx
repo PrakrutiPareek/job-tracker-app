@@ -1,10 +1,10 @@
-import { useState } from "react";
+import {useState} from "react";
 import SearchBar from "../components/SearchBar";
 import JobCard from "../components/JobCard";
-import { fetchJobListings } from "../api/adzunaApi";
-import  ErrorMessage  from "../Components/ErrorMessage";
-import  handleApiError  from "../utils/handleApiError";
-import  apiRequest  from "../utils/apiRequest";
+import {fetchJobListings} from "../api/adzunaApi";
+import ErrorMessage from "../Components/ErrorMessage";
+import handleApiError from "../utils/handleApiError";
+import apiRequest from "../utils/apiRequest";
 
 const JobSearch = () => {
   const [keyword, setKeyword] = useState("");
@@ -17,7 +17,7 @@ const JobSearch = () => {
 
   // Handle search function
   const handleSearch = async () => {
-    if(!keyword.trim() && !location.trim()) {
+    if (!keyword.trim() && !location.trim()) {
       setJobs([]);
       setError("Please enter a keyword or location to search.");
       return;
@@ -26,7 +26,7 @@ const JobSearch = () => {
       setLoading(true);
       setError("");
       const result = await apiRequest(() =>
-        fetchJobListings(keyword, location)
+        fetchJobListings(keyword, location),
       );
       setJobs(Array.isArray(result) ? result : result.results || []);
     } catch (error) {
@@ -38,11 +38,13 @@ const JobSearch = () => {
   };
 
   return (
-    <div className="flex h-screen bg-(--black) text-(--white)">
+    <div className="flex h-screen">
       <main className="flex-1 p-10">
-        <h1 className="text-[28px] font-bold font-headings">Job Search</h1>
+        <h1 className="text-[28px] font-bold font-headings text-(--yellow) mb-10 self-start">
+          Job Search
+        </h1>
         <div className="max-w-4xl mx-auto mt-10">
-          <h2 className="text-center text-[20px] font-bold font-medium mb-8">
+          <h2 className="text-center text-[22px] font-extrabold mb-8">
             Start Your Job Search
           </h2>
           <SearchBar
@@ -55,7 +57,7 @@ const JobSearch = () => {
 
           <div className="bg-(--navy-blue) mt-8 rounded-xl p-4">
             <h3 className="text-[20px] font-bold mb-4">Available Jobs</h3>
-            <div className="max-h-[600px] overflow-y-auto pr-1">
+            <div className="max-h-150 overflow-y-auto pr-1">
               <ErrorMessage message={error} />
               {loading && <p>Loading...</p>}
               {!jobs.length ? (

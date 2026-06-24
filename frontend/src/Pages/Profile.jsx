@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
+import {useState} from "react";
+import {toast} from "react-toastify";
 
-import { validateProfileForm } from "../Utils/profileValidation";
-import { profileFields } from "../constants/profileFields";
+import {validateProfileForm} from "../Utils/profileValidation";
+import {profileFields} from "../constants/profileFields";
 
 import FormInput from "../components/profile/FormInput";
-import ExperienceSelect from "../components/profile/ExperienceSelect";
-import ProfilePhotoSection from "../components/profile/ProfilePhotoSection";
+import ExperienceSelect from "../Components/Profile/ExperienceSelect";
+// import ProfilePhotoSection from "../components/profile/ProfilePhotoSection";
 
 const INITIAL_FORM_DATA = {
   firstName: "",
@@ -24,7 +24,7 @@ export default function Profile() {
   const [hasChanges, setHasChanges] = useState(false);
 
   // Handle input changes and clear errors for the changed field
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = ({target: {name, value}}) => {
     // Update form data, set hasChanges to true, and clear any existing error for the changed field
     setFormData((prev) => ({
       ...prev,
@@ -69,25 +69,18 @@ export default function Profile() {
   };
 
   return (
-    <div className="px-4 sm:p-6 md:px-8 lg:px-56">
+    <main className="mt-10 mx-12 flex flex-col items-center">
       {/* Header */}
 
-      <h1 className="text-(--yellow) text-2xl font-bold  mb-6 text-center md:text-left">
+      <h1 className="text-[28px] font-bold font-headings text-(--yellow) mb-10 self-start">
         Profile Information
       </h1>
 
       {/* Card */}
 
-      <div className="bg-(--navy-blue) rounded-2xl p-4 sm:p-2 md:p-4">
-        <ProfilePhotoSection />
-
-        <h2 className="text-(--yellow) text-xl font-semibold px-18 mb-6 mt-6 text-center md:text-left">
-          User Details
-        </h2>
-
-        <form className="text-(--white) text-md" onSubmit={handleSubmit}>
-          <div className="px-12 grid grid-cols-1 md:grid-cols-2 gap-4">
-     
+      <div className="bg-(--navy-blue) rounded-2xl p-4 sm:p-2 md:p-4 max-w-svh">
+        <form className="text-md" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 w-full">
             {profileFields.slice(0, 2).map((field) => (
               <FormInput
                 key={field.name}
@@ -99,7 +92,7 @@ export default function Profile() {
             ))}
           </div>
 
-          <div className="mt-8 px-12">
+          <div className="mt-4">
             <FormInput
               {...profileFields[2]}
               value={formData.email}
@@ -108,21 +101,21 @@ export default function Profile() {
             />
           </div>
 
-          <div className="mt-4 px-12">
+          <div className="mt-4">
             <FormInput
               {...profileFields[3]}
               value={formData.jobRole}
               onChange={handleChange}
             />
           </div>
-          <div className="mt-4 px-24">
+          <div className="mt-4">
             <ExperienceSelect
               value={formData.experience}
               onChange={handleChange}
             />
           </div>
 
-          <div className="flex justify-center md:justify-end mt-6">
+          <div className="flex justify-center md:justify-end mt-6 px-12">
             <button
               type="submit"
               disabled={!hasChanges || loading}
@@ -144,6 +137,6 @@ export default function Profile() {
           </div>
         </form>
       </div>
-    </div>
+    </main>
   );
 }

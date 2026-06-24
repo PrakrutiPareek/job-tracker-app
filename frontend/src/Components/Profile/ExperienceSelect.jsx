@@ -1,6 +1,6 @@
-export default function ExperienceSelect({ value, onChange, error }) {
+export default function ExperienceSelect({value, onChange, error}) {
   return (
-    <>
+    <div className="mt-4 px-12">
       <label className="block text-(--yellow) mb-3 text-md font-semibold">
         Experience Level
       </label>
@@ -10,9 +10,9 @@ export default function ExperienceSelect({ value, onChange, error }) {
         onChange={(e) => {
           onChange(e);
         }}
-        className="w-full p-2 bg-[#E5E5E5] text-(--black) outline-none text-lg"
+        className="w-full p-2 bg-[#E5E5E5] text-(--black) outline-none text-lg [&>option]:bg-(--black) [&>option]:text-(--white)"
       >
-        <option  aria-label="Select experience level">
+        <option aria-label="Select experience level">
           Enter total experience in years
         </option>
 
@@ -24,6 +24,6 @@ export default function ExperienceSelect({ value, onChange, error }) {
       </select>
 
       {error && <p className="text-red-500 mt-1 text-sm">{error}</p>}
-    </>
+    </div>
   );
 }
