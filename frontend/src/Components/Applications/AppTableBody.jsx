@@ -18,6 +18,7 @@ const AppTableBody = ({jobs, onStatusChange}) => {
               }}
               className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
             >
+              <option value="">Select Status</option>
               <option value="Saved">Saved</option>
               <option value="Applied">Applied</option>
               <option value="Interview">Interview</option>
@@ -34,6 +35,7 @@ const AppTableBody = ({jobs, onStatusChange}) => {
               }}
               className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
             >
+              <option value="">Select Source</option>
               <option value="Adzuna">Adzuna</option>
               <option value="LinkedIn">LinkedIn</option>
               <option value="Indeed">Indeed</option>
@@ -41,6 +43,16 @@ const AppTableBody = ({jobs, onStatusChange}) => {
               <option value="Company-site">Company-site</option>
               <option value="Other">Other</option>
             </select>
+          </td>
+          <td value="Link">
+            <a
+              href={job.jobUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-(--gray) px-2 py-1 text-(--navy-blue) rounded-xl cursor-pointer hover:-translate-y-0.5"
+            >
+              Link
+            </a>
           </td>
           <td>
             <input type="textarea" placeholder="Notes.." />

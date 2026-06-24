@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
+import {useState} from "react";
+import {toast} from "react-toastify";
 
-import { validateProfileForm } from "../Utils/profileValidation";
-import { profileFields } from "../constants/profileFields";
+import {validateProfileForm} from "../Utils/profileValidation";
+import {profileFields} from "../constants/profileFields";
 
 import FormInput from "../components/profile/FormInput";
 import ExperienceSelect from "../components/profile/ExperienceSelect";
@@ -24,7 +24,7 @@ export default function Profile() {
   const [hasChanges, setHasChanges] = useState(false);
 
   // Handle input changes and clear errors for the changed field
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = ({target: {name, value}}) => {
     // Update form data, set hasChanges to true, and clear any existing error for the changed field
     setFormData((prev) => ({
       ...prev,
@@ -87,7 +87,6 @@ export default function Profile() {
 
         <form className="text-(--white) text-md" onSubmit={handleSubmit}>
           <div className="px-12 grid grid-cols-1 md:grid-cols-2 gap-4">
-     
             {profileFields.slice(0, 2).map((field) => (
               <FormInput
                 key={field.name}
