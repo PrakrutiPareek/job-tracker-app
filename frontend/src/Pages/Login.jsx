@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { auth } from "../firebase";
 import AuthInput from "../Components/AuthInput";
 
@@ -20,17 +23,35 @@ function Login() {
       localStorage.setItem("user", "true");
 
       navigate("/profile/applications");
-
     } catch {
       setFirebaseError("Invalid email or password");
     }
   };
 
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setFirebaseError("Please enter your email first");
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setFirebaseError("Password reset email sent. Check your inbox.");
+    } catch (error) {
+      console.log(error.code, error.message);
+      setFirebaseError("Error sending reset email");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0f2e] via-[#1a1f4e] to-[#0a0f2e]">
-      
-      <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }} className="w-[420px] p-8 rounded-xl bg-white/5">
-        
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleLogin();
+        }}
+        className="w-[420px] p-8 rounded-xl bg-white/5"
+      >
         <h1 className="text-2xl font-bold text-center mb-6 text-yellow-500">
           Log in to your account
         </h1>
@@ -41,29 +62,34 @@ function Login() {
           </p>
         )}
 
-        <AuthInput label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <AuthInput
+          label="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-    <AuthInput
-  label="Password"
-  type="password"
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-/>
+        <AuthInput
+          label="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-<button
-  type="submit"
-  className="w-full p-2 rounded font-bold bg-yellow-500 text-black"
->
-  Log In
-</button>
+        <button
+          type="submit"
+          className="w-full p-2 rounded font-bold bg-yellow-500 text-black"
+        >
+          Log In
+        </button>
 
-<Link
-  to="#"
-  className="block text-sm text-yellow-500 text-right mt-2 hover:underline"
->
-  Forgot Password?
-</Link>
-
+        <button
+          type="button"
+          onClick={handleForgotPassword}
+          className="block text-sm text-yellow-500 text-right mt-2 hover:underline"
+        >
+          Forgot Password?
+        </button>
 
         <p className="text-center mt-4">
           <Link to="/signup" className="text-yellow-500">
