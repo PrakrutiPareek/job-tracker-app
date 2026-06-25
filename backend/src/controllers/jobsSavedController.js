@@ -4,16 +4,16 @@ const db = require("../db/database"); // Import the database connection
 const saveJob = (req, res) => {
   //extract job data from request body
   console.log("Incoming request body:", req.body); // Log the incoming request body for debugging
-  const { jobId, title, company, location, salary, url } = req.body;
+  const { jobId, jobRole, company, location, salary, url } = req.body;
   console.log("Received job data:", req.body);
 
   try {
     // Insert the job data into the saved_jobs table
     const savedjob = db.prepare(`
-            INSERT INTO saved_jobs (jobId, title, company, location, salary, url)
+            INSERT INTO saved_jobs (jobId, jobRole, company, location, salary, url)
             VALUES (?, ?, ?, ?, ?, ?)
         `);
-    const result = savedjob.run(jobId, title, company, location, salary, url); // save the job data to db
+    const result = savedjob.run(jobId, jobRole, company, location, salary, url); // save the job data to db
     console.log("Job saved result:", result); // Log the saved job data
     // After saving successfully, send a success response
     res.status(201).json({ message: "Job saved successfully" });

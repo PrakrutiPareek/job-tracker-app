@@ -1,30 +1,30 @@
 import { PenBox, Trash2 } from "lucide-react";
-// import { savedJobsApi} from "../../api/savedJobsApi"
+import  savedJobsApi from "../../api/savedJobsApi"
 import { useEffect, useState } from "react";
 const AppTableBody = ({ jobs, onStatusChange }) => {
   const [savedJobs, setSavedJobs] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchSavedJobs = async () => {
-  //     try {
-  //       const data = await getSavedJobs();
-  //       setSavedJobs(data);
-  //     } catch (error) {
-  //       console.error("Error fetching saved jobs:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchSavedJobs = async () => {
+      try {
+        const data = await savedJobsApi.getSavedJobs();
+        setSavedJobs(data);
+      } catch (error) {
+        console.error("Error fetching saved jobs:", error);
+      }
+    };
 
-  //   fetchSavedJobs();
-  // }, []);
+    fetchSavedJobs();
+  }, []);
 
   return (
     <tbody>
-      {jobs.map((job) => (
+      {savedJobs.map((job) => (
         <tr key={job.id} className="[&>td]:px-3 [&>td]:py-4">
-          <td>{job.id}</td>
+          <td>{job.jobId}</td>
           <td>{job.jobRole}</td>
           <td>{job.company}</td>
-          <td>{job.date}</td>
+          <td>{job.createdAt}</td>
           <td>{job.location}</td>
           <td>
             <select
