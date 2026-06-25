@@ -5,7 +5,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 5,
@@ -37,7 +41,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 6,
@@ -45,7 +50,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 7,
@@ -53,7 +59,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 8,
@@ -61,7 +68,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 9,
@@ -69,7 +77,8 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
   {
     id: 10,
@@ -77,6 +86,7 @@ export const mockApplications = [
     company: "Spotify",
     date: "13/06/2026",
     location: "Remote",
-    status: "Saved",
+    status: "",
+    jobUrl: "https://github.com/sonamjha123/group_6_project",
   },
 ];

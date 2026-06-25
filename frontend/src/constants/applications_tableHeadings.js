@@ -6,6 +6,7 @@ export const tableHeadings = [
   "Location",
   "Status",
   "Source",
+  "Job URL",
   "Notes",
   "",
 ];
