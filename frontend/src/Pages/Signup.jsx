@@ -80,7 +80,7 @@ function Signup() {
 
         <p className="text-center mt-4">
           <Link to="/login" className="text-yellow-500">
-            Already have an account? Sign In
+            Already have an account? Log In
           </Link>
         </p>
 

@@ -31,11 +31,13 @@ const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
       }`}
     >
       <button
-        type="button"
-        aria-label="Close sidebar"
-        className="absolute right-4 top-4 text-white md:hidden"
-        onClick={onClose}
-      >
+  className="ml-4 flex cursor-pointer items-center gap-3 transition-all duration-200 hover:-translate-y-0.5"
+  aria-label="Logout button"
+  onClick={() => {
+    localStorage.removeItem("user"); // ✅ CLEAR AUTH
+    window.location.href = "/login"; // ✅ FORCE REDIRECT
+  }}
+>
         <X size={24} />
       </button>
 

@@ -43,16 +43,27 @@ function Login() {
 
         <AuthInput label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-        <div>
-          <AuthInput label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <p className="text-sm text-yellow-500 text-right mt-2 cursor-pointer">
-            Forgot Password?
-          </p>
-        </div>
+    <AuthInput
+  label="Password"
+  type="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
 
-        <button type="submit" className="w-full p-2 rounded font-bold bg-yellow-500 text-black">
-          Log In
-        </button>
+<button
+  type="submit"
+  className="w-full p-2 rounded font-bold bg-yellow-500 text-black"
+>
+  Log In
+</button>
+
+<Link
+  to="#"
+  className="block text-sm text-yellow-500 text-right mt-2 hover:underline"
+>
+  Forgot Password?
+</Link>
+
 
         <p className="text-center mt-4">
           <Link to="/signup" className="text-yellow-500">
