@@ -10,22 +10,33 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
-    try {
-      setFirebaseError("");
+const handleSignup = async () => {
+  // Minimal validation
+  if (password.length < 6) {
+    setFirebaseError("Password must be at least 6 characters");
+    return;
+  }
 
-      await createUserWithEmailAndPassword(auth, email, password);
+  try {
+    setFirebaseError("");
 
-      // mark user as logged in
-      localStorage.setItem("user", "true");
+    await createUserWithEmailAndPassword(auth, email, password);
 
-      navigate("/profile");
+    localStorage.setItem("user", "true");
 
-    } catch (error) {
-      console.log(error.code, error.message);
+    navigate("/profile");
+
+  } catch (error) {
+    console.log(error.code, error.message);
+
+    if (error.code === "auth/email-already-in-use") {
+      setFirebaseError("This email is already registered");
+    } else {
       setFirebaseError("Error creating account");
     }
-  };
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0f2e] via-[#1a1f4e] to-[#0a0f2e]">
