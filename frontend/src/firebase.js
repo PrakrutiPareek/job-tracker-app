@@ -2,10 +2,11 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBTJPz4ChhLuEnbf0RnoZ3aXImJ_fnjdA0",
-  authDomain: "jobease-979d9.firebaseapp.com",
-  projectId: "jobease-979d9",
-  appId: "1:57409627591:web:b66d568338ca59d7d1e5e2",};
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
