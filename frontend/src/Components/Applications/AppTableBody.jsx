@@ -1,6 +1,22 @@
-import {PenBox, Trash2} from "lucide-react";
+import { PenBox, Trash2 } from "lucide-react";
+// import { savedJobsApi} from "../../api/savedJobsApi"
+import { useEffect, useState } from "react";
+const AppTableBody = ({ jobs, onStatusChange }) => {
+  const [savedJobs, setSavedJobs] = useState([]);
 
-const AppTableBody = ({jobs, onStatusChange}) => {
+  // useEffect(() => {
+  //   const fetchSavedJobs = async () => {
+  //     try {
+  //       const data = await getSavedJobs();
+  //       setSavedJobs(data);
+  //     } catch (error) {
+  //       console.error("Error fetching saved jobs:", error);
+  //     }
+  //   };
+
+  //   fetchSavedJobs();
+  // }, []);
+
   return (
     <tbody>
       {jobs.map((job) => (

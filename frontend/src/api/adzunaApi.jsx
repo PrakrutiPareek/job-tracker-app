@@ -6,6 +6,7 @@ export const fetchJobListings = async (keyword, location) => {
       "API URL is missing. Please Check environment configuration.",
     );
   }
+  // Make a GET request to the backend API to fetch job listings based on the provided keyword and location
   const response = await axios.get(`${API_URL}/api/jobs/search`, {
     params: {
       keyword,
