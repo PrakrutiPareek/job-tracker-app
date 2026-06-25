@@ -1,52 +1,66 @@
-import {Link, NavLink} from "react-router-dom";
-import {SquareUser, SearchCheck, SaveIcon, LogOut} from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
+import { SquareUser, SearchCheck, SaveIcon, LogOut, X } from "lucide-react";
 import logo from "../assets/images/logo-icon.png";
 
-const Sidebar = () => {
+/*
+ * Sidebar Component
+ *
+ * Displays:
+ * - Brand
+ * - User navigation
+ * - Logout
+ */
+
+const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
   const navLinks = [
-    {path: "/profile", label: "Profile", end: true, icon: SquareUser},
-    {
-      path: "/profile/applications",
-      label: "Applications",
-      icon: SaveIcon,
-    },
-    {path: "/profile/jobSearch", label: "Job Search", icon: SearchCheck},
+    { path: "/profile", label: "Profile", end: true, icon: SquareUser },
+    { path: "/profile/applications", label: "Applications", icon: SaveIcon },
+    { path: "/profile/jobsearch", label: "Job Search", icon: SearchCheck },
   ];
 
   return (
     <aside
-      className="w-72 border-r-2 border-(--navy-blue) min-h-screen flex flex-col sticky top-0"
+      id="sidebar-navigation"
       aria-label="Secondary navigation"
+      className={`fixed left-0 top-0 z-50 flex min-h-screen w-72 flex-col border-r-2 border-(--navy-blue) bg-black transition-transform duration-200 md:sticky md:translate-x-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
     >
+      <button
+        type="button"
+        aria-label="Close sidebar"
+        className="absolute right-4 top-4 text-white md:hidden"
+        onClick={onClose}
+      >
+        <X size={24} />
+      </button>
+
       <Link
         to="/"
         aria-label="JobEase Home"
-        className="flex items-center gap-2 p-10 text-(--yellow) text-4xl font-bold border-b-2 border-(--navy-blue)"
+        className="flex items-center gap-2 border-b-2 border-(--navy-blue) p-10 text-4xl font-bold text-(--yellow)"
+        onClick={onClose}
       >
-        {/* Logo */}
-        <img
-          src={logo}
-          alt="JobEase Logo"
-          className="
-            h-10
-            w-auto
-            object-contain
-          "
-        />
-        JobEase
+        <img src={logo} alt="JobEase Logo" className="h-10 w-auto object-contain" />
+
+        <span className="font-headings">JobEase</span>
       </Link>
 
-      <nav className="flex-1 mx-6 mt-8" aria-label="Sidebar navigation">
+      <nav className="mx-6 mt-8 flex-1" aria-label="Sidebar navigation">
         {navLinks.map((link) => {
           const Icon = link.icon;
+
           return (
             <NavLink
               key={link.label}
               to={link.path}
               end={link.end}
-              aria-current={({isActive}) => (isActive ? "page" : undefined)}
-              className={({isActive}) =>
-                `flex items-center gap-3 py-3 px-2 rounded-xl ${isActive ? "user-link" : null}`
+              onClick={onClose}
+              aria-current={({ isActive }) => (isActive ? "page" : undefined)}
+              className={({ isActive }) =>
+                `flex items-center gap-3 rounded-xl px-2 py-3 ${
+                  isActive ? "user-link" : null
+                }`
               }
             >
               <Icon size={25} />
@@ -55,10 +69,12 @@ const Sidebar = () => {
           );
         })}
       </nav>
-      <div className="flex p-6  border-t-2 border-(--navy-blue)">
+
+      <div className="flex border-t-2 border-(--navy-blue) p-6">
         <button
-          className="flex items-center gap-3 ml-4 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+          className="ml-4 flex cursor-pointer items-center gap-3 transition-all duration-200 hover:-translate-y-0.5"
           aria-label="Logout button"
+          onClick={onClose}
         >
           <LogOut size={25} />
           Logout
