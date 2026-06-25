@@ -3,7 +3,6 @@ function Pagination({currentPage, totalPages, onPageChange}) {
 
   return (
     <div className="flex gap-2 my-12 fixed bottom-0 left-64 right-0 justify-center">
-      {/* Previous */}
       <button
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
@@ -28,7 +27,7 @@ function Pagination({currentPage, totalPages, onPageChange}) {
             onClick={() => onPageChange(pageNumber)}
             className={`px-4 py-2 rounded-md border text-sm font-medium ${
               currentPage === pageNumber
-                ? "bg-(--yellow) text-black" // ✅ feedback applied correctly
+                ? "bg-(--yellow) text-black" 
                 : "bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >

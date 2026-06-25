@@ -15,8 +15,9 @@ import PageNotFound from "./Pages/PageNotFound";
 import MainLayout from "./Components/MainLayout";
 import UserLayout from "./Components/UserLayout";
 
-// Toast Notifications
-import {ToastContainer} from "react-toastify";
+import ProtectedRoute from "./Components/ProtectedRoute";
+
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -25,25 +26,32 @@ function App() {
       <ToastContainer position="top-right" />
 
       <Routes>
-        {/* MainLayout routes - navbar/footer */}
+        {/* PUBLIC ROUTES */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
         </Route>
 
-        {/* UserLayout routes - sidebar */}
-        <Route path="/profile" element={<UserLayout />}>
-          <Route index element={<Profile />} />
-          <Route path="jobSearch" element={<JobSearch />} />
-          <Route path="applications" element={<Applications />} />
-        </Route>
-
-        {/* Auth pages - no navbar/footer */}
+        {/* AUTH ROUTES */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* Fallback */}
+        {/* PROTECTED ROUTES */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <UserLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Profile />} />
+          <Route path="jobsearch" element={<JobSearch />} />
+          <Route path="applications" element={<Applications />} />
+        </Route>
+
+        {/* 404 */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
