@@ -115,7 +115,7 @@ const ManualApplicationForm = ({isOpen, onClose, onSubmit}) => {
               id="source"
               value={formData.source}
               onChange={handleChange}
-              className={`w-full border rounded-md p-2 mb-3 ${errors.company ? "border-red-500" : "border-(--yellow)"} [&>option]:text-(--black)`}
+              className={`w-full border rounded-md p-2 mb-3 ${errors.source ? "border-red-500" : "border-(--yellow)"} [&>option]:text-(--black)`}
             >
               <option value="">Select Source</option>
               <option value="LinkedIn">LinkedIn</option>
@@ -171,6 +171,9 @@ const ManualApplicationForm = ({isOpen, onClose, onSubmit}) => {
             onChange={handleChange}
             className="w-full border border-(--yellow) rounded-md p-2 mb-3"
           />
+          {errors.jobUrl && (
+            <p className="text-red-500 mb-3 text-sm">{errors.jobUrl}</p>
+          )}
 
           <label htmlFor="notes">Notes</label>
           <textarea

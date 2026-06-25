@@ -44,15 +44,19 @@ const AppTableBody = ({jobs, onStatusChange}) => {
               <option value="Other">Other</option>
             </select>
           </td>
-          <td value="Link">
-            <a
-              href={job.jobUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-(--gray) px-2 py-1 text-(--navy-blue) rounded-xl cursor-pointer hover:-translate-y-0.5"
-            >
-              Link
-            </a>
+          <td data-label="Job URL">
+            {job.jobUrl ? (
+              <a
+                href={job.jobUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-(--gray) px-2 py-1 text-(--navy-blue) rounded-xl cursor-pointer hover:-translate-y-0.5"
+              >
+                Link
+              </a>
+            ) : (
+              <span className="text-gray-400">—</span>
+            )}
           </td>
           <td>
             <input type="textarea" placeholder="Notes.." />
