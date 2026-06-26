@@ -8,7 +8,7 @@ const JobCard = ({ job }) => {
   const handleSavedJob = async () => {
     // jobDataToSave contains relevant info about job that need to be saved in db.
     const jobDataToSave = {
-      // jobId: job.id,
+      jobId: job.id,
       jobRole: job.title,
       company: job.company?.display_name,
       location: job.location?.display_name,
@@ -26,7 +26,7 @@ const JobCard = ({ job }) => {
       console.log("Job saved successfully!", jobDataToSave);
       toast.success("Job saved successfully!");
     } catch (error) {
-      console.log("Job saved successfully!", jobDataToSave);
+      console.log("JobCard:", jobDataToSave);
       toast.error("Failed to save job");
       console.error("Error saving job:", error);
     }
