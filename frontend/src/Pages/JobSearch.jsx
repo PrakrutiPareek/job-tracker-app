@@ -7,7 +7,8 @@ import handleApiError from "../utils/handleApiError";
 import apiRequest from "../utils/apiRequest";
 
 const JobSearch = () => {
-  const [keyword, setKeyword] = useState("");
+  // State variable to store the job search keyword, location entered by the user
+  const [keyword, setKeyword] = useState(""); 
 
   const [location, setLocation] = useState("");
 
@@ -25,6 +26,7 @@ const JobSearch = () => {
     try {
       setLoading(true);
       setError("");
+      // Fetch job listings from the backend API based on the provided keyword and location
       const result = await apiRequest(() =>
         fetchJobListings(keyword, location),
       );

@@ -1,5 +1,36 @@
+// JobCard component displays individual job listings with company name, job title, location, and action buttons for saving or applying to the job.
+import { savedJobsApi } from "../api/savedjobsApi";
+import { toast } from "react-toastify";
 const JobCard = ({ job }) => {
-  const { company, title, location, redirect_url } = job;
+  // Destructure job which is passed as a prop to the JobCard component.
+  const { title,company,  location, redirect_url } = job;
+
+  const handleSavedJob = async () => {
+    // jobDataToSave contains relevant info about job that need to be saved in db.
+    const jobDataToSave = {
+      jobId: job.id,
+      jobRole: job.title,
+      company: job.company?.display_name,
+      location: job.location?.display_name,
+      salary: job.salary_min
+        ? `${job.salary_min} - ${job.salary_max}`
+        : "Not specified",
+      source: "Adzuna",
+      // date: job.created,
+      note: job.description,
+      url: job.redirect_url,
+    };
+
+    try {
+      await savedJobsApi(jobDataToSave);
+      console.log("Job saved successfully!", jobDataToSave);
+      toast.success("Job saved successfully!");
+    } catch (error) {
+      console.log("JobCard:", jobDataToSave);
+      toast.error("Failed to save job");
+      console.error("Error saving job:", error);
+    }
+  };
 
   return (
     <div
@@ -8,22 +39,27 @@ const JobCard = ({ job }) => {
     >
       <span
         className="rounded-full bg-(--navy-blue) px-3 py-1 text-sm
-        font-medium text-(--navy-blue)"
+        font-medium text-(--white) inline-block"
       >
-        {company.display_name}
+        {company?.display_name || "Unknown Company"}
       </span>
 
       <h3 className="mt-3 text-xl font-bold text-(--white)">{title}</h3>
 
-      <p className="mt-2 text-slate-400">📍 {location.display_name}</p>
+      <p className="mt-2 text-slate-400">
+        📍 {location?.display_name || "Unknown Location"}
+      </p>
 
       <div className="mt-6 flex items-center justify-between">
-        <span className="text-sm text-(--gray)">Remote Friendly</span>
+        <span className="text-sm text-(--gray)">
+          {job?.remote ? "Remote Friendly" : "On-site"}
+        </span>
 
         <div className="flex gap-3">
           <button
             className="rounded-lg bg-(--yellow) px-4 py-2 text-sm
                 font-semibold text-(--black)"
+            onClick={handleSavedJob}
           >
             Save
           </button>

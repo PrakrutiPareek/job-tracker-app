@@ -1,73 +1,91 @@
-import {PenBox, Trash2} from "lucide-react";
 
-const AppTableBody = ({jobs, onStatusChange}) => {
-  return (
-    <tbody>
-      {jobs.map((job) => (
-        <tr key={job.id} className="[&>td]:px-3 [&>td]:py-4">
-          <td>{job.id}</td>
-          <td>{job.jobRole}</td>
-          <td>{job.company}</td>
-          <td>{job.date}</td>
-          <td>{job.location}</td>
-          <td>
-            <select
-              value={job.status}
-              onChange={(e) => {
-                return onStatusChange(job.id, e.target.value);
-              }}
-              className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
-            >
-              <option value="">Select Status</option>
-              <option value="Saved">Saved</option>
-              <option value="Applied">Applied</option>
-              <option value="Interview">Interview</option>
-              <option value="Offer">Offer</option>
-              <option value="Rejected">Rejected</option>
-            </select>
-          </td>
+import { PenBox, Trash2 } from "lucide-react";
+import { savedJobsApi, getsavedJobs } from "../../api/savedJobsApi";
+import { useEffect, useState } from "react";
+const AppTableBody = ({ jobs, onStatusChange, onDelete }) => {
+    const [savedJobs, setSavedJobs] = useState([]);
 
-          <td>
-            <select
-              value={job.source}
-              onChange={(e) => {
-                return onStatusChange(job.id, e.target.value);
-              }}
-              className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
-            >
-              <option value="">Select Source</option>
-              <option value="Adzuna">Adzuna</option>
-              <option value="LinkedIn">LinkedIn</option>
-              <option value="Indeed">Indeed</option>
-              <option value="CV-Library">CV-Library</option>
-              <option value="Company-site">Company-site</option>
-              <option value="Other">Other</option>
-            </select>
-          </td>
-          <td data-label="Job URL">
-            {job.jobUrl ? (
-              <a
-                href={job.jobUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-(--gray) px-2 py-1 text-(--navy-blue) rounded-xl cursor-pointer hover:-translate-y-0.5"
+    useEffect(() => {
+      const fetchSavedJobs = async () => {
+        try {
+          const data = await getsavedJobs(); // Call the getSavedJobs function from the savedJobsApi
+          setSavedJobs(data);
+        } catch (error) {
+          console.error("Error fetching saved jobs:", error);
+        }
+      };
+
+      fetchSavedJobs();
+    }, []);
+    return (
+      <tbody>
+        {savedJobs.map((job, index) => (
+          <tr key={job.id} className="[&>td]:px-3 [&>td]:py-4">
+            <td>{index + 1}</td>
+            <td className="max-w-40 truncate text-nowrap">{job.jobRole}</td>
+            <td className="max-w-40 truncate text-nowrap">{job.company}</td>
+            {/* <td>{new Date(job.createdAt).toLocaleDateString("en-GB")}</td> */}
+            <td className="max-w-40 truncate text-nowrap">{job.location}</td>
+            <td>
+              <select
+                value={job.status}
+                onChange={(e) => {
+                  return onStatusChange(job.id, e.target.value);
+                }}
+                className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
               >
-                Link
-              </a>
-            ) : (
-              <span className="text-gray-400">—</span>
-            )}
-          </td>
-          <td>
-            <input type="textarea" placeholder="Notes.." />
-          </td>
-          <td>
-            <Trash2 size={20} />
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  );
-};
+                <option value="">Select Status</option>
+                <option value="Saved">Saved</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Offer">Offer</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </td>
+
+            <td>
+              <select
+                value={job.source}
+                onChange={(e) => {
+                  return onStatusChange(job.id, e.target.value);
+                }}
+                className="[&>option]:bg-(--black) [&>option]:text-(--yellow)"
+              >
+                <option value="">Select Source</option>
+                <option value="Adzuna">Adzuna</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Indeed">Indeed</option>
+                <option value="CV-Library">CV-Library</option>
+                <option value="Company-site">Company-site</option>
+                <option value="Other">Other</option>
+              </select>
+            </td>
+            <td data-label="URL">
+              {job.url ? (
+                <a
+                  href={job.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-(--gray) px-2 py-1 text-(--navy-blue) rounded-xl cursor-pointer hover:-translate-y-0.5"
+                >
+                  URL
+                </a>
+              ) : (
+                <span className="text-gray-400">—</span>
+              )}
+            </td>
+            <td>
+              <input type="textarea" placeholder="Notes.." />
+            </td>
+            <td>
+              <button onClick={() => onDelete(job.id)}>
+                <Trash2 size={20} />
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    );
+  };
 
 export default AppTableBody;

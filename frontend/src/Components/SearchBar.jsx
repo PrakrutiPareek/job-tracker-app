@@ -1,5 +1,5 @@
 import { FaSearch } from "react-icons/fa";
-
+//SearchBar component provides input fields for users to enter job search keywords and location, along with a search button to trigger the search action.
 const SearchBar = ({
   keyword,
   location,
