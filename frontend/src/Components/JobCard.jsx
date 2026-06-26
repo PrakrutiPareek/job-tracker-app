@@ -3,11 +3,12 @@ import { savedJobsApi } from "../api/savedjobsApi";
 import { toast } from "react-toastify";
 const JobCard = ({ job }) => {
   // Destructure job which is passed as a prop to the JobCard component.
-  const { company, title, location, redirect_url } = job;
+  const { title,company,  location, redirect_url } = job;
 
   const handleSavedJob = async () => {
     // jobDataToSave contains relevant info about job that need to be saved in db.
     const jobDataToSave = {
+      // jobId: job.id,
       jobRole: job.title,
       company: job.company?.display_name,
       location: job.location?.display_name,
@@ -22,8 +23,10 @@ const JobCard = ({ job }) => {
 
     try {
       await savedJobsApi(jobDataToSave);
+      console.log("Job saved successfully!", jobDataToSave);
       toast.success("Job saved successfully!");
     } catch (error) {
+      console.log("Job saved successfully!", jobDataToSave);
       toast.error("Failed to save job");
       console.error("Error saving job:", error);
     }

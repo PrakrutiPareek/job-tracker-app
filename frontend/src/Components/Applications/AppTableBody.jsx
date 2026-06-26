@@ -1,10 +1,8 @@
-import { Trash2 } from "lucide-react";
 
+import { PenBox, Trash2 } from "lucide-react";
+import { savedJobsApi, getsavedJobs } from "../../api/savedJobsApi";
+import { useEffect, useState } from "react";
 const AppTableBody = ({ jobs, onStatusChange, onDelete }) => {
-  import { PenBox, Trash2 } from "lucide-react";
-  import { savedJobsApi, getsavedJobs } from "../../api/savedJobsApi";
-  import { useEffect, useState } from "react";
-  const AppTableBody = ({ jobs, onStatusChange }) => {
     const [savedJobs, setSavedJobs] = useState([]);
 
     useEffect(() => {
@@ -89,5 +87,5 @@ const AppTableBody = ({ jobs, onStatusChange, onDelete }) => {
       </tbody>
     );
   };
-};
+
 export default AppTableBody;

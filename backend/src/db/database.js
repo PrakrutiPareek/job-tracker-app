@@ -4,15 +4,14 @@ const db = new Database("jobs.db");
 db.exec(`
     CREATE TABLE IF NOT EXISTS saved_jobs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    jobId TEXT UNIQUE NOT NULL,
+    jobId TEXT UNIQUE,
     jobRole TEXT ,
     company TEXT ,
     location TEXT,
     salary TEXT,
     url TEXT ,
-    status TEXT DEFAULT 'Saved',
     source TEXT DEFAULT 'Adzuna',
-    notes TEXT DEFAULT ''
+    note TEXT DEFAULT ''
     )
     `);
 
