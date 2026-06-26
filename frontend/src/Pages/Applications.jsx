@@ -87,8 +87,8 @@ const Applications = () => {
   //handling form submission
   const handleFormSubmit = async (data) => {
     try {
-      await jobsApi.saveJobs(data);
-      setSavedJobs((prev) => [...prev, savedJobs]);
+      const formEntry = await jobsApi.saveJobs(data);
+      setSavedJobs((prev) => [...prev, formEntry]);
       toast.success("Successfully saved the job");
     } catch (error) {
       toast.error("Error saving job", error);

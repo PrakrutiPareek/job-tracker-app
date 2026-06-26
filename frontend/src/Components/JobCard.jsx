@@ -8,16 +8,11 @@ const JobCard = ({job}) => {
   const handleSavedJob = async () => {
     // jobDataToSave contains relevant info about job that need to be saved in db.
     const jobDataToSave = {
-      jobId: job.id,
       jobRole: job.title,
       company: job.company?.display_name,
       location: job.location?.display_name,
-      salary: job.salary_min
-        ? `${job.salary_min} - ${job.salary_max}`
-        : "Not specified",
       status: "Saved",
       source: "Adzuna",
-      date: job.created,
       note: job.description,
       url: job.redirect_url,
     };
