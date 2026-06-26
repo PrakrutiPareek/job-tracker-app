@@ -2,7 +2,7 @@ function Pagination({currentPage, totalPages, onPageChange}) {
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex gap-2 my-12 fixed bottom-0 left-64 right-0 justify-center">
+    <div className="flex gap-2 mt-auto mb-2 fixed bottom-0 left-72 right-0 justify-center">
       <button
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
@@ -27,7 +27,7 @@ function Pagination({currentPage, totalPages, onPageChange}) {
             onClick={() => onPageChange(pageNumber)}
             className={`px-4 py-2 rounded-md border text-sm font-medium ${
               currentPage === pageNumber
-                ? "bg-(--yellow) text-black" 
+                ? "bg-(--yellow) text-black"
                 : "bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >

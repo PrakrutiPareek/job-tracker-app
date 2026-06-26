@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {mockApplications} from "../Data/mockApplications";
 
 import AppTableBody from "../Components/Applications/AppTableBody";
@@ -7,10 +7,42 @@ import AppCardGrid from "../Components/Applications/AppCardGrid";
 import ManualApplicationForm from "../Components/Applications/ManualApplicationForm";
 import Pagination from "../Components/Pagination";
 import EmptyAppState from "../Components/Applications/EmptyAppState";
+import jobsApi from "../api/jobsApi";
+import {toast} from "react-toastify";
+import axios from "axios";
 
 const Applications = () => {
   //Mock jobs state
-  const [jobs, setJobs] = useState(mockApplications);
+  // const [jobs, setJobs] = useState(mockApplications);
+
+  //fetching saved jobs from database
+  const [savedJobs, setSavedJobs] = useState([]);
+
+  useEffect(() => {
+    const fetchSavedJobs = async () => {
+      try {
+        const data = await jobsApi.getSavedJobs();
+        setSavedJobs(data);
+      } catch (error) {
+        toast.error("Error fetching saved jobs:", error);
+      }
+    };
+
+    fetchSavedJobs();
+  }, []);
+
+  //handle delete job from tracker
+  const handleDelete = async (id) => {
+    try {
+      await jobsApi.deleteJob(id);
+      //update savedjobs after deletion
+      setSavedJobs((prevJobs) => {
+        return prevJobs.filter((job) => job.id !== id);
+      });
+    } catch (error) {
+      toast.error("Failed to delete job", error);
+    }
+  };
 
   //Manual job entry form state
   const [showForm, setShowForm] = useState(false);
@@ -19,21 +51,21 @@ const Applications = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  const totalPages = Math.ceil(jobs.length / itemsPerPage);
+  const totalPages = Math.ceil(savedJobs.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentJobs = jobs.slice(startIndex, endIndex);
+  const currentJobs = savedJobs.slice(startIndex, endIndex);
 
-  const totalJobs = jobs.length;
+  const totalJobs = savedJobs.length;
 
   // handling status change
   const handleStatusChange = (id, updatedStatus) => {
-    const updated = jobs.map((job) =>
+    const updated = savedJobs.map((job) =>
       job.id === id ? {...job, status: updatedStatus} : job,
     );
-    setJobs(updated);
+    setSavedJobs(updated);
   };
 
   //  appcards stat calculations
@@ -44,7 +76,7 @@ const Applications = () => {
     Offer: 0,
     Rejected: 0,
   };
-  jobs.forEach((job) => {
+  savedJobs.forEach((job) => {
     statusCounts[job.status]++;
   });
   const getPercentage = (statusCounts) => {
@@ -53,7 +85,15 @@ const Applications = () => {
   };
 
   //handling form submission
-  const handleFormSubmit = () => console.log("Form is submitted");
+  const handleFormSubmit = async (data) => {
+    try {
+      await jobsApi.saveJobs(data);
+      setSavedJobs((prev) => [...prev, savedJobs]);
+      toast.success("Successfully saved the job");
+    } catch (error) {
+      toast.error("Error saving job", error);
+    }
+  };
 
   return (
     <main className="mt-10 mx-12 flex flex-col">
@@ -82,7 +122,7 @@ const Applications = () => {
       <AppCardGrid
         statusCounts={statusCounts}
         getPercentage={getPercentage}
-        totalJobs={jobs.length}
+        totalJobs={savedJobs.length}
       />
 
       {/* Empty states - when no jobs are available 
@@ -98,6 +138,7 @@ const Applications = () => {
             <AppTableBody
               jobs={currentJobs}
               onStatusChange={handleStatusChange}
+              onDelete={handleDelete}
             />
           </table>
         </div>

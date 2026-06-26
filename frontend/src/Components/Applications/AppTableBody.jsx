@@ -1,31 +1,15 @@
-import { PenBox, Trash2 } from "lucide-react";
-import  savedJobsApi from "../../api/savedJobsApi"
-import { useEffect, useState } from "react";
-const AppTableBody = ({ jobs, onStatusChange }) => {
-  const [savedJobs, setSavedJobs] = useState([]);
+import {Trash2} from "lucide-react";
 
-  useEffect(() => {
-    const fetchSavedJobs = async () => {
-      try {
-        const data = await savedJobsApi.getSavedJobs();
-        setSavedJobs(data);
-      } catch (error) {
-        console.error("Error fetching saved jobs:", error);
-      }
-    };
-
-    fetchSavedJobs();
-  }, []);
-
+const AppTableBody = ({jobs, onStatusChange, onDelete}) => {
   return (
     <tbody>
-      {savedJobs.map((job) => (
+      {jobs.map((job, index) => (
         <tr key={job.id} className="[&>td]:px-3 [&>td]:py-4">
-          <td>{job.jobId}</td>
-          <td>{job.jobRole}</td>
-          <td>{job.company}</td>
-          <td>{job.createdAt}</td>
-          <td>{job.location}</td>
+          <td>{index + 1}</td>
+          <td className="max-w-40 truncate text-nowrap">{job.jobRole}</td>
+          <td className="max-w-40 truncate text-nowrap">{job.company}</td>
+          {/* <td>{new Date(job.createdAt).toLocaleDateString("en-GB")}</td> */}
+          <td className="max-w-40 truncate text-nowrap">{job.location}</td>
           <td>
             <select
               value={job.status}
@@ -60,15 +44,15 @@ const AppTableBody = ({ jobs, onStatusChange }) => {
               <option value="Other">Other</option>
             </select>
           </td>
-          <td data-label="Job URL">
-            {job.jobUrl ? (
+          <td data-label="URL">
+            {job.url ? (
               <a
-                href={job.jobUrl}
+                href={job.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-(--gray) px-2 py-1 text-(--navy-blue) rounded-xl cursor-pointer hover:-translate-y-0.5"
               >
-                Link
+                URL
               </a>
             ) : (
               <span className="text-gray-400">—</span>
@@ -78,7 +62,9 @@ const AppTableBody = ({ jobs, onStatusChange }) => {
             <input type="textarea" placeholder="Notes.." />
           </td>
           <td>
-            <Trash2 size={20} />
+            <button onClick={() => onDelete(job.id)}>
+              <Trash2 size={20} />
+            </button>
           </td>
         </tr>
       ))}
