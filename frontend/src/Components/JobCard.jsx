@@ -1,26 +1,30 @@
 // JobCard component displays individual job listings with company name, job title, location, and action buttons for saving or applying to the job.
-import jobsApi from "../api/jobsApi";
+import { savedJobsApi } from "../api/savedjobsApi";
+import { toast } from "react-toastify";
+const JobCard = ({ job }) => {
+  // Destructure job which is passed as a prop to the JobCard component.
+  const { company, title, location, redirect_url } = job;
 
-const JobCard = ({job}) => {
-  const {company, title, location, redirect_url} = job; // Destructure job which is passed as a prop to the JobCard component and job is coming from the parent component JobList.jsx.
-  // The job object contains details about a specific job listing, including the company name, job title, location, and a URL for applying to the job.
-  //  console.log("JobCard component received job prop:", job); // Log the received job prop to the console for debugging purposes.
   const handleSavedJob = async () => {
     // jobDataToSave contains relevant info about job that need to be saved in db.
     const jobDataToSave = {
       jobRole: job.title,
       company: job.company?.display_name,
       location: job.location?.display_name,
-      status: "Saved",
+      salary: job.salary_min
+        ? `${job.salary_min} - ${job.salary_max}`
+        : "Not specified",
       source: "Adzuna",
+      // date: job.created,
       note: job.description,
       url: job.redirect_url,
     };
 
     try {
-      console.log("Saving job:", jobDataToSave); // Log the job data to be saved for debugging purposes.
-      await jobsApi.saveJobs(jobDataToSave);
+      await savedJobsApi(jobDataToSave);
+      toast.success("Job saved successfully!");
     } catch (error) {
+      toast.error("Failed to save job");
       console.error("Error saving job:", error);
     }
   };

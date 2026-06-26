@@ -12,8 +12,7 @@ db.exec(`
     url TEXT ,
     status TEXT DEFAULT 'Saved',
     source TEXT DEFAULT 'Adzuna',
-    notes TEXT DEFAULT '',
-    createdAt TEXT
+    notes TEXT DEFAULT ''
     )
     `);
 

@@ -1,12 +1,11 @@
-import {useState} from "react";
-import {toast} from "react-toastify";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
-import {validateProfileForm} from "../Utils/profileValidation";
-import {profileFields} from "../constants/profileFields";
+import { validateProfileForm } from "../Utils/profileValidation";
+import { profileFields } from "../constants/profileFields";
 
 import FormInput from "../components/profile/FormInput";
 import ExperienceSelect from "../Components/Profile/ExperienceSelect";
-// import ProfilePhotoSection from "../components/profile/ProfilePhotoSection";
 
 const INITIAL_FORM_DATA = {
   firstName: "",
@@ -24,7 +23,7 @@ export default function Profile() {
   const [hasChanges, setHasChanges] = useState(false);
 
   // Handle input changes and clear errors for the changed field
-  const handleChange = ({target: {name, value}}) => {
+  const handleChange = ({ target: { name, value } }) => {
     // Update form data, set hasChanges to true, and clear any existing error for the changed field
     setFormData((prev) => ({
       ...prev,
@@ -40,22 +39,16 @@ export default function Profile() {
       }));
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const validationErrors = validateProfileForm(formData);
-
     // If there are validation errors,  do not proceed with submission
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-
     try {
       setLoading(true);
-
-      // TODO: API Call
 
       toast.success("Profile updated successfully!");
 
@@ -67,7 +60,6 @@ export default function Profile() {
       setLoading(false);
     }
   };
-
   return (
     <main className="mt-10 mx-12 flex flex-col items-center">
       {/* Header */}
