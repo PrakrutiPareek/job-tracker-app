@@ -57,8 +57,11 @@ function Signup() {
         )}
 
         <div className="mb-4">
-          <label className="block mb-1">Email</label>
+          <label htmlFor="signup-email" className="block mb-1">
+            Email
+          </label>
           <input
+            id="signup-email"
             type="email"
             className="w-full p-3 rounded bg-(--gray) text-2xl"
             value={email}
@@ -67,8 +70,11 @@ function Signup() {
         </div>
 
         <div className="mb-4">
-          <label className="block mb-1">Password</label>
+          <label htmlFor="signup-password" className="block mb-1">
+            Password
+          </label>
           <input
+            id="signup-password"
             type="password"
             className="w-full p-2 rounded bg-(--gray) text-2xl"
             value={password}

@@ -1,5 +1,6 @@
 export default function FormInput({
   label,
+  id,
   name,
   placeholder,
   type,
@@ -9,11 +10,15 @@ export default function FormInput({
 }) {
   return (
     <div className="mt-4 px-12">
-      <label className="block text-(--yellow) mb-3 text-md font-semibold">
+      <label
+        htmlFor={id}
+        className="block text-(--yellow) mb-3 text-md font-semibold"
+      >
         {label}
       </label>
 
       <input
+        id={id}
         type={type}
         placeholder={placeholder}
         name={name}

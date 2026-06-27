@@ -64,6 +64,7 @@ function Login() {
         )}
 
         <AuthInput
+          id="login-email"
           label="Email"
           type="email"
           value={email}
@@ -71,6 +72,7 @@ function Login() {
         />
 
         <AuthInput
+          id="login-password"
           label="Password"
           type="password"
           value={password}
