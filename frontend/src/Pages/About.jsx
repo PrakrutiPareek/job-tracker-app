@@ -29,7 +29,7 @@ const teamMembers = [
     id: 4,
     initials: sonam,
     name: "Sonam",
-    bio: "I work as a Frontend Developer & enjoy building web applications. I am always interested in learning new things and improving my technical skills.",
+    bio: "I'm a Frontend Developer who loves building modern, user-friendly web applications. I'm always curious to learn new technologies and sharpen my skills . Outside of coding, I'm a proud mom of two adorable boys who keep me on my toes and make life wonderfully busy.",
   },
   {
     id: 5,

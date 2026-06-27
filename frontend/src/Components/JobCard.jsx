@@ -1,9 +1,10 @@
 // JobCard component displays individual job listings with company name, job title, location, and action buttons for saving or applying to the job.
-import {savedJobsApi} from "../api/savedjobsApi";
-import {toast} from "react-toastify";
-const JobCard = ({job}) => {
+import { savedJobsApi } from "../api/savedjobsApi";
+import Button from "./Button";
+import { toast } from "react-toastify";
+const JobCard = ({ job }) => {
   // Destructure job which is passed as a prop to the JobCard component.
-  const {title, company, location, redirect_url} = job;
+  const { title, company, location, redirect_url } = job;
 
   const handleSavedJob = async () => {
     // jobDataToSave contains relevant info about job that need to be saved in db.
@@ -23,10 +24,8 @@ const JobCard = ({job}) => {
 
     try {
       await savedJobsApi(jobDataToSave);
-      console.log("Job saved successfully!", jobDataToSave);
       toast.success("Job saved successfully!");
     } catch (error) {
-      console.log("JobCard:", jobDataToSave);
       toast.error(error.response?.data?.message);
       console.error("Error saving job:", error);
     }
@@ -56,21 +55,18 @@ const JobCard = ({job}) => {
         </span>
 
         <div className="flex gap-3">
-          <button
-            className="rounded-lg bg-(--yellow) px-4 py-2 text-sm
-                font-semibold text-(--black)"
+          <Button
+            variant="primary"
+            className="hover:text-(--white)"
             onClick={handleSavedJob}
           >
             Save
-          </button>
+          </Button>
 
           <a href={redirect_url} target="_blank" rel="noreferrer">
-            <button
-              className="rounded-lg border text-(--black) px-4 py-2
-              text-sm  bg-(--white) font-medium hover:bg-(--gray) hover:text-(--black) transition"
-            >
+            <Button variant="secondary" className="hover:text-(--yellow)">
               Apply
-            </button>
+            </Button>
           </a>
         </div>
       </div>
