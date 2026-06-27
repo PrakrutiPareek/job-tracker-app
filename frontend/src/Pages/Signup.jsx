@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebase";
+import AuthInput from "../Components/UI/AuthInput";
 import {House} from "lucide-react";
 
 function Signup() {
@@ -12,7 +13,6 @@ function Signup() {
   const navigate = useNavigate();
 
   const handleSignup = async () => {
-    // Minimal validation
     if (password.length < 6) {
       setFirebaseError("Password must be at least 6 characters");
       return;
@@ -24,26 +24,25 @@ function Signup() {
       await createUserWithEmailAndPassword(auth, email, password);
 
       localStorage.setItem("user", "true");
-
       navigate("/profile");
     } catch (error) {
-      console.log(error.code, error.message);
-
-      if (error.code === "auth/email-already-in-use") {
-        setFirebaseError("This email is already registered");
-      } else {
-        setFirebaseError("Error creating account");
-      }
+      setFirebaseError(
+        error.code === "auth/email-already-in-use"
+          ? "This email is already registered"
+          : "Error creating account",
+      );
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSignup();
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-(--black) text-(--yellow) px-4">
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSignup();
-        }}
+        onSubmit={handleSubmit}
         className="bg-(--navy-blue) p-8 rounded-xl w-[90vw] max-w-md sm:max-w-lg md:max-w-xl"
       >
         <h1 className="text-3xl font-bold text-center mb-6">
@@ -56,31 +55,19 @@ function Signup() {
           </p>
         )}
 
-        <div className="mb-4">
-          <label htmlFor="signup-email" className="block mb-1">
-            Email
-          </label>
-          <input
-            id="signup-email"
-            type="email"
-            className="w-full p-3 rounded bg-(--gray) text-2xl"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+        <AuthInput
+          label="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <div className="mb-4">
-          <label htmlFor="signup-password" className="block mb-1">
-            Password
-          </label>
-          <input
-            id="signup-password"
-            type="password"
-            className="w-full p-2 rounded bg-(--gray) text-2xl"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+        <AuthInput
+          label="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
         <button
           type="submit"
