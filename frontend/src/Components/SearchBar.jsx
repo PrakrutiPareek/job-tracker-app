@@ -1,4 +1,5 @@
 import { FaSearch } from "react-icons/fa";
+import Button from "./Button";
 //SearchBar component provides input fields for users to enter job search keywords and location, along with a search button to trigger the search action.
 const SearchBar = ({
   keyword,
@@ -23,13 +24,13 @@ const SearchBar = ({
         placeholder="Search jobs in UK only"
         className="bg-transparent flex-1 outline-none"
       />
-      <button
+      <Button variant="primary" 
+        className="hover:text-(--white)"
         onClick={onSearch}
-        className="ml-4 cursor-pointer"
         aria-label="Search Jobs "
       >
         <FaSearch size={24} />
-      </button>
+      </Button>
     </div>
   );
 };
