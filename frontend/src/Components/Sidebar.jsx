@@ -1,25 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
-import { SquareUser, SearchCheck, SaveIcon, LogOut, X } from "lucide-react";
+import {Link, NavLink} from "react-router-dom";
+import {SquareUser, SearchCheck, SaveIcon, X} from "lucide-react";
 import logo from "../assets/images/logo-icon.png";
+import LogoutBtn from "./LogoutBtn";
 
-/*
- * Sidebar Component
- *
- * Displays:
- * - Brand
- * - User navigation
- * - Logout
- */
-
-const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
+const Sidebar = ({isOpen = false, onClose = () => {}}) => {
   const navLinks = [
-    { path: "/profile", label: "Profile", end: true, icon: SquareUser },
+    {path: "/profile", label: "Profile", end: true, icon: SquareUser},
     {
       path: "/profile/applications",
       label: "Application Tracker",
       icon: SaveIcon,
     },
-    { path: "/profile/jobsearch", label: "Job Search", icon: SearchCheck },
+    {path: "/profile/jobsearch", label: "Job Search", icon: SearchCheck},
   ];
 
   return (
@@ -64,10 +56,8 @@ const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
               to={link.path}
               end={link.end}
               onClick={onClose}
-              aria-current={({ isActive }) =>
-                isActive ? "page" : undefined
-              }
-              className={({ isActive }) =>
+              aria-current={({isActive}) => (isActive ? "page" : undefined)}
+              className={({isActive}) =>
                 `flex items-center gap-3 rounded-xl px-2 py-3 ${
                   isActive ? "user-link" : ""
                 }`
@@ -81,19 +71,7 @@ const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
       </nav>
 
       {/*LOGOUT BUTTON  */}
-      <div className="flex border-t-2 border-(--navy-blue) p-6">
-        <button
-          className="ml-4 flex cursor-pointer items-center gap-3 transition-all duration-200 hover:-translate-y-0.5"
-          aria-label="Logout button"
-          onClick={() => {
-            localStorage.removeItem("user"); // clear auth
-            window.location.href = "/login"; // redirect
-          }}
-        >
-          <LogOut size={25} />
-          Logout
-        </button>
-      </div>
+      <LogoutBtn />
     </aside>
   );
 };
