@@ -3,7 +3,7 @@ import AppTableBody from "../Components/Applications/AppTableBody";
 import AppTableHeads from "../Components/Applications/AppTableHeads";
 import AppCardGrid from "../Components/Applications/AppCardGrid";
 import ManualApplicationForm from "../Components/Applications/ManualApplicationForm";
-import Pagination from "../Components/Pagination";
+import Pagination from "../Components/Applications/Pagination";
 import EmptyAppState from "../Components/Applications/EmptyAppState";
 import {getsavedJobs} from "../api/savedjobsApi";
 import {toast} from "react-toastify";

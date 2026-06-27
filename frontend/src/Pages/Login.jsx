@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth } from "../firebase";
-import AuthInput from "../Components/AuthInput";
+import {auth} from "../firebase";
+import AuthInput from "../Components/UI/AuthInput";
 
 function Login() {
   const [email, setEmail] = useState("");
