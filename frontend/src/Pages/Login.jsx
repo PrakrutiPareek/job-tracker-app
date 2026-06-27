@@ -17,11 +17,8 @@ function Login() {
   const handleLogin = async () => {
     try {
       setFirebaseError("");
-
       await signInWithEmailAndPassword(auth, email, password);
-
       localStorage.setItem("user", "true");
-
       navigate("/profile/applications");
     } catch {
       setFirebaseError("Invalid email or password");
@@ -33,33 +30,28 @@ function Login() {
       setFirebaseError("Please enter your email first");
       return;
     }
-
     try {
       await sendPasswordResetEmail(auth, email);
       setFirebaseError("Password reset email sent. Check your inbox.");
-    } catch (error) {
-      console.log(error.code, error.message);
+    } catch {
       setFirebaseError("Error sending reset email");
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin();
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0f2e] via-[#1a1f4e] to-[#0a0f2e]">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleLogin();
-        }}
-        className="w-[420px] p-8 rounded-xl bg-white/5"
-      >
+      <form onSubmit={handleSubmit} className="w-[420px] p-8 rounded-xl bg-white/5">
         <h1 className="text-2xl font-bold text-center mb-6 text-yellow-500">
           Log in to your account
         </h1>
 
         {firebaseError && (
-          <p className="text-red-400 text-sm mb-4 text-center">
-            {firebaseError}
-          </p>
+          <p className="text-red-400 text-sm mb-4 text-center">{firebaseError}</p>
         )}
 
         <AuthInput
@@ -76,10 +68,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button
-          type="submit"
-          className="w-full p-2 rounded font-bold bg-yellow-500 text-black"
-        >
+        <button type="submit" className="w-full p-2 rounded font-bold bg-yellow-500 text-black">
           Log In
         </button>
 

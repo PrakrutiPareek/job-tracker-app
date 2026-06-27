@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import AuthInput from "../Components/AuthInput";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -10,42 +11,38 @@ function Signup() {
 
   const navigate = useNavigate();
 
-const handleSignup = async () => {
-  // Minimal validation
-  if (password.length < 6) {
-    setFirebaseError("Password must be at least 6 characters");
-    return;
-  }
-
-  try {
-    setFirebaseError("");
-
-    await createUserWithEmailAndPassword(auth, email, password);
-
-    localStorage.setItem("user", "true");
-
-    navigate("/profile");
-
-  } catch (error) {
-    console.log(error.code, error.message);
-
-    if (error.code === "auth/email-already-in-use") {
-      setFirebaseError("This email is already registered");
-    } else {
-      setFirebaseError("Error creating account");
+  const handleSignup = async () => {
+    if (password.length < 6) {
+      setFirebaseError("Password must be at least 6 characters");
+      return;
     }
-  }
-};
 
+    try {
+      setFirebaseError("");
+
+      await createUserWithEmailAndPassword(auth, email, password);
+
+      localStorage.setItem("user", "true");
+      navigate("/profile");
+
+    } catch (error) {
+      setFirebaseError(
+        error.code === "auth/email-already-in-use"
+          ? "This email is already registered"
+          : "Error creating account"
+      );
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSignup();
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0f2e] via-[#1a1f4e] to-[#0a0f2e]">
-
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSignup();
-        }}
+        onSubmit={handleSubmit}
         className="w-[420px] p-8 rounded-xl bg-white/5"
       >
         <h1 className="text-2xl font-bold text-center mb-6 text-yellow-500">
@@ -58,29 +55,19 @@ const handleSignup = async () => {
           </p>
         )}
 
-        <div className="mb-4">
-          <label className="block mb-1 text-yellow-500">
-            Email
-          </label>
-          <input
-            type="email"
-            className="w-full p-2 rounded bg-gray-200 text-black"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+        <AuthInput
+          label="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <div className="mb-4">
-          <label className="block mb-1 text-yellow-500">
-            Password
-          </label>
-          <input
-            type="password"
-            className="w-full p-2 rounded bg-gray-200 text-black"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+        <AuthInput
+          label="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
         <button
           type="submit"
@@ -99,7 +86,6 @@ const handleSignup = async () => {
           ←
         </Link>
       </form>
-
     </div>
   );
 }
