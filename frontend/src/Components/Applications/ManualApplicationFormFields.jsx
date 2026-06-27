@@ -50,7 +50,7 @@ const ManualApplicationFormFields = ({
         />
       ))}
 
-      <div className="mt-2 px-10">
+      <div className="mt-2 px-4 sm:px-6">
         <label htmlFor="notes">Notes</label>
         <textarea
           name="notes"

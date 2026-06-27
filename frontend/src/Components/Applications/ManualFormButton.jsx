@@ -1,8 +1,8 @@
 import Button from "../UI/Button";
 
-const ManualFormButton = (onClick) => {
+const ManualFormButton = ({onClick}) => {
   return (
-    <div className="flex justify-end gap-2 mt-2 mr-10">
+    <div className="flex flex-col sm:justify-end gap-2 mt-2 px-4  sm:px-6 sm:flex-row ">
       <Button variant="secondary" onClick={onClick}>
         Cancel
       </Button>

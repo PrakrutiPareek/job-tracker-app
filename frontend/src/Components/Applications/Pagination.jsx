@@ -2,7 +2,7 @@ function Pagination({currentPage, totalPages, onPageChange}) {
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex gap-2 mt-auto mb-2 fixed bottom-0 left-72 right-0 justify-center">
+    <div className="fixed inset-x-0 bottom-0 z-40 flex flex-wrap justify-center gap-2 bg-black/30 p-2 backdrop-blur sm:px-4 md:left-72 md:right-0">
       <button
         type="button"
         onClick={() => onPageChange(currentPage - 1)}

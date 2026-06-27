@@ -65,8 +65,8 @@ const Applications = () => {
     ApplicationCardsStats(savedJobs);
 
   return (
-    <main className="mt-10 mx-12 flex flex-col">
-      <div className="flex justify-between items-center mb-10">
+    <main className="mt-10 px-4 sm:px-6 lg:px-12 flex flex-col">
+      <div className="mb-6 flex flex-col justify-between items-center gap-4 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-[28px] font-bold font-headings text-(--yellow)">
             Applications
@@ -95,8 +95,8 @@ const Applications = () => {
       {totalJobs === 0 ? (
         <EmptyAppState />
       ) : (
-        <div className="overflow-hidden rounded-xl mt-8">
-          <table className="bg-(--navy-blue) w-full">
+        <div className="overflow-x-auto rounded-xl mt-8">
+          <table className="bg-(--navy-blue) w-full min-w-225">
             <AppTableHeads />
 
             <AppTableBody
