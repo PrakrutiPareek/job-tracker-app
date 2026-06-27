@@ -1,9 +1,9 @@
 // JobCard component displays individual job listings with company name, job title, location, and action buttons for saving or applying to the job.
-import { savedJobsApi } from "../api/savedjobsApi";
-import { toast } from "react-toastify";
-const JobCard = ({ job }) => {
+import {savedJobsApi} from "../api/savedjobsApi";
+import {toast} from "react-toastify";
+const JobCard = ({job}) => {
   // Destructure job which is passed as a prop to the JobCard component.
-  const { title,company,  location, redirect_url } = job;
+  const {title, company, location, redirect_url} = job;
 
   const handleSavedJob = async () => {
     // jobDataToSave contains relevant info about job that need to be saved in db.
@@ -27,7 +27,7 @@ const JobCard = ({ job }) => {
       toast.success("Job saved successfully!");
     } catch (error) {
       console.log("JobCard:", jobDataToSave);
-      toast.error("Failed to save job");
+      toast.error(error.response?.data?.message);
       console.error("Error saving job:", error);
     }
   };

@@ -1,64 +1,55 @@
 import {useState, useEffect} from "react";
-import {mockApplications} from "../Data/mockApplications";
-
 import AppTableBody from "../Components/Applications/AppTableBody";
 import AppTableHeads from "../Components/Applications/AppTableHeads";
 import AppCardGrid from "../Components/Applications/AppCardGrid";
 import ManualApplicationForm from "../Components/Applications/ManualApplicationForm";
 import Pagination from "../Components/Pagination";
 import EmptyAppState from "../Components/Applications/EmptyAppState";
-import jobsApi from "../api/jobsApi";
+import {getsavedJobs} from "../api/savedjobsApi";
 import {toast} from "react-toastify";
-import axios from "axios";
+import handleDeleteJob from "../utils/ApplicationsFunctions/handleDeleteJob";
+import ApplicationCardsStats from "../utils/ApplicationsFunctions/ApplicationCardsStats";
 
 const Applications = () => {
-  //Mock jobs state
-  // const [jobs, setJobs] = useState(mockApplications);
-
   //fetching saved jobs from database
   const [savedJobs, setSavedJobs] = useState([]);
 
+  const fetchSavedJobs = async () => {
+    try {
+      const data = await getsavedJobs();
+      setSavedJobs(data);
+    } catch {
+      toast.error("Error fetching saved jobs");
+    }
+  };
+
   useEffect(() => {
-    const fetchSavedJobs = async () => {
+    const loadSavedJobs = async () => {
       try {
-        const data = await jobsApi.getSavedJobs();
+        const data = await getsavedJobs();
         setSavedJobs(data);
-      } catch (error) {
-        toast.error("Error fetching saved jobs:", error);
+      } catch {
+        toast.error("Error fetching saved jobs:");
       }
     };
-
-    fetchSavedJobs();
+    loadSavedJobs();
   }, []);
 
   //handle delete job from tracker
   const handleDelete = async (id) => {
-    try {
-      await jobsApi.deleteJob(id);
-      //update savedjobs after deletion
-      setSavedJobs((prevJobs) => {
-        return prevJobs.filter((job) => job.id !== id);
-      });
-    } catch (error) {
-      toast.error("Failed to delete job", error);
-    }
+    await handleDeleteJob(id, setSavedJobs);
   };
 
   //Manual job entry form state
   const [showForm, setShowForm] = useState(false);
 
-  //  Pagination state
+  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-
   const totalPages = Math.ceil(savedJobs.length / itemsPerPage);
-
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
   const currentJobs = savedJobs.slice(startIndex, endIndex);
-
-  const totalJobs = savedJobs.length;
 
   // handling status change
   const handleStatusChange = (id, updatedStatus) => {
@@ -69,31 +60,8 @@ const Applications = () => {
   };
 
   //  appcards stat calculations
-  const statusCounts = {
-    Saved: 0,
-    Applied: 0,
-    Interview: 0,
-    Offer: 0,
-    Rejected: 0,
-  };
-  savedJobs.forEach((job) => {
-    statusCounts[job.status]++;
-  });
-  const getPercentage = (statusCounts) => {
-    if (totalJobs === 0) return 0;
-    return Math.round((statusCounts / totalJobs) * 100);
-  };
-
-  //handling form submission
-  const handleFormSubmit = async (data) => {
-    try {
-      const formEntry = await jobsApi.saveJobs(data);
-      setSavedJobs((prev) => [...prev, formEntry]);
-      toast.success("Successfully saved the job");
-    } catch (error) {
-      toast.error("Error saving job", error);
-    }
-  };
+  const {totalJobs, statusCounts, getPercentage} =
+    ApplicationCardsStats(savedJobs);
 
   return (
     <main className="mt-10 mx-12 flex flex-col">
@@ -115,19 +83,17 @@ const Applications = () => {
       <ManualApplicationForm
         isOpen={showForm}
         onClose={() => setShowForm(false)}
-        onSubmit={handleFormSubmit}
+        onJobSave={fetchSavedJobs}
       />
 
       {/* Stat cards */}
       <AppCardGrid
         statusCounts={statusCounts}
         getPercentage={getPercentage}
-        totalJobs={savedJobs.length}
+        totalJobs={totalJobs}
       />
 
-      {/* Empty states - when no jobs are available 
-      =============OR===============
-      Application Tracker table */}
+      {/* Empty states - when no jobs are available OR Application Tracker table */}
       {totalJobs === 0 ? (
         <EmptyAppState />
       ) : (
@@ -137,6 +103,7 @@ const Applications = () => {
 
             <AppTableBody
               jobs={currentJobs}
+              startIndex={startIndex}
               onStatusChange={handleStatusChange}
               onDelete={handleDelete}
             />
@@ -144,7 +111,7 @@ const Applications = () => {
         </div>
       )}
 
-      {/*  Replace placeholder with actual Pagination */}
+      {/* Pagination */}
       {totalJobs > 0 && (
         <Pagination
           currentPage={currentPage}
@@ -155,5 +122,6 @@ const Applications = () => {
     </main>
   );
 };
-
 export default Applications;
+
+//notes for instructors: To Do: For this file I have to use custom hooks for decreasing the code lines under 100, which I am not confident right now. -Prakruti Pareek
