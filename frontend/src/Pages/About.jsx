@@ -17,7 +17,7 @@ const teamMembers = [
     id: 2,
     initials: nisha,
     name: "Nisha",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget semper elit.",
+    bio: "I am a Support Account Manager at an enterprise software company focused on manufacturing solutions. I am learning to code so I can build my own applications.",
   },
   {
     id: 3,
