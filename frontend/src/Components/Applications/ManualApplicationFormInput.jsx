@@ -19,7 +19,7 @@ export default function ManualApplicationFormInput({
         name={name}
         value={value}
         onChange={onChange}
-        className={`w-full p-2 bg-(--gray)\ text-black outline-none text-lg ${
+        className={`w-full p-2 bg-(--gray) text-black outline-none text-lg ${
           error ? "border border-red-500" : ""
         }`}
       />
