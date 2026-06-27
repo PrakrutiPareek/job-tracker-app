@@ -1,5 +1,5 @@
 import {useState} from "react";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/UI/SearchBar";
 import JobCard from "../components/JobCard";
 import {fetchJobListings} from "../api/adzunaApi";
 import ErrorMessage from "../Components/UI/ErrorMessage";

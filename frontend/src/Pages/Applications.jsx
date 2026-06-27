@@ -9,6 +9,7 @@ import {getsavedJobs} from "../api/savedjobsApi";
 import {toast} from "react-toastify";
 import handleDeleteJob from "../utils/ApplicationsFunctions/handleDeleteJob";
 import ApplicationCardsStats from "../utils/ApplicationsFunctions/ApplicationCardsStats";
+import Button from "../Components/UI/Button";
 
 const Applications = () => {
   //fetching saved jobs from database
@@ -72,12 +73,9 @@ const Applications = () => {
           </h1>
           <p>Take control of your job search!</p>
         </div>
-        <button
-          onClick={() => setShowForm(true)}
-          className="bg-(--yellow) text-(--black) px-4 py-3 rounded-xl font-bold transition-transform active:scale-90 hover:scale-105 hover:text-(--white)"
-        >
+        <Button variant="primary" onClick={() => setShowForm(true)}>
           + Add Application
-        </button>
+        </Button>
       </div>
       {/* Manual entry form */}
       <ManualApplicationForm

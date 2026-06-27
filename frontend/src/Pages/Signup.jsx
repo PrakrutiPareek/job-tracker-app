@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../firebase";
+import {House} from "lucide-react";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -10,45 +11,42 @@ function Signup() {
 
   const navigate = useNavigate();
 
-const handleSignup = async () => {
-  // Minimal validation
-  if (password.length < 6) {
-    setFirebaseError("Password must be at least 6 characters");
-    return;
-  }
-
-  try {
-    setFirebaseError("");
-
-    await createUserWithEmailAndPassword(auth, email, password);
-
-    localStorage.setItem("user", "true");
-
-    navigate("/profile");
-
-  } catch (error) {
-    console.log(error.code, error.message);
-
-    if (error.code === "auth/email-already-in-use") {
-      setFirebaseError("This email is already registered");
-    } else {
-      setFirebaseError("Error creating account");
+  const handleSignup = async () => {
+    // Minimal validation
+    if (password.length < 6) {
+      setFirebaseError("Password must be at least 6 characters");
+      return;
     }
-  }
-};
 
+    try {
+      setFirebaseError("");
+
+      await createUserWithEmailAndPassword(auth, email, password);
+
+      localStorage.setItem("user", "true");
+
+      navigate("/profile");
+    } catch (error) {
+      console.log(error.code, error.message);
+
+      if (error.code === "auth/email-already-in-use") {
+        setFirebaseError("This email is already registered");
+      } else {
+        setFirebaseError("Error creating account");
+      }
+    }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0f2e] via-[#1a1f4e] to-[#0a0f2e]">
-
+    <div className="min-h-screen flex items-center justify-center bg-(--black) text-(--yellow) px-4">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSignup();
         }}
-        className="w-[420px] p-8 rounded-xl bg-white/5"
+        className="bg-(--navy-blue) p-8 rounded-xl w-[90vw] max-w-md sm:max-w-lg md:max-w-xl"
       >
-        <h1 className="text-2xl font-bold text-center mb-6 text-yellow-500">
+        <h1 className="text-3xl font-bold text-center mb-6">
           Create an account
         </h1>
 
@@ -59,24 +57,20 @@ const handleSignup = async () => {
         )}
 
         <div className="mb-4">
-          <label className="block mb-1 text-yellow-500">
-            Email
-          </label>
+          <label className="block mb-1">Email</label>
           <input
             type="email"
-            className="w-full p-2 rounded bg-gray-200 text-black"
+            className="w-full p-3 rounded bg-(--gray) text-2xl"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         <div className="mb-4">
-          <label className="block mb-1 text-yellow-500">
-            Password
-          </label>
+          <label className="block mb-1">Password</label>
           <input
             type="password"
-            className="w-full p-2 rounded bg-gray-200 text-black"
+            className="w-full p-2 rounded bg-(--gray) text-2xl"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -84,22 +78,22 @@ const handleSignup = async () => {
 
         <button
           type="submit"
-          className="w-full p-2 rounded font-bold bg-yellow-500 text-black"
+          className="w-full p-2 rounded font-bold bg-(--yellow) text-black mt-4"
         >
           Register
         </button>
 
         <p className="text-center mt-4">
-          <Link to="/login" className="text-yellow-500">
-            Already have an account? Log In
+          Already have an account?
+          <Link to="/login" className="ml-2 underline">
+            Log In
           </Link>
         </p>
 
-        <Link to="/" className="block text-center mt-3 text-white text-xl">
-          ←
+        <Link to="/" className="flex justify-center mt-3">
+          <House size={20} />
         </Link>
       </form>
-
     </div>
   );
 }
