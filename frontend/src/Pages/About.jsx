@@ -42,9 +42,13 @@ const teamMembers = [
 const About = () => {
   return (
     // Page background
-    <main className="bg-(--black) py-10 px-4 font-headings">
+<<<<<<< HEAD
+    <main className="h-full flex flex-col items-center justify-center bg-(--black) py-10 px-6 font-headings">
+=======
+    <main className="flex min-h-[calc(100vh-120px)] flex-col justify-center bg-(--black) py-6 px-4 font-headings">
+>>>>>>> 5c89f94484e66fc61dd175c7736f748cc637b8b5
       {/* Page heading */}
-      <div className="text-center mb-8">
+      <div className="text-center mb-6">
         {/* Page title */}
         <h1 className="text-(--yellow) uppercase font-bold tracking-widest text-3xl mb-2">
           Meet the team
@@ -59,12 +63,12 @@ const About = () => {
       </div>
 
       {/* Team members cards loop using teamMembers array and creates a card for each member */}
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-2  sm:px-6 lg:grid-cols-5 lg:px-8">
         {teamMembers.map((member) => (
           // Team member cards with effect on hover
           <div
             key={member.id}
-            className="bg-(--navy-blue) rounded-xl w-65 overflow-hidden hover:opacity-50 transition-opacity duration-300"
+            className="w-full overflow-hidden rounded-xl bg-(--navy-blue) transition-opacity duration-300 hover:opacity-50"
           >
             {/* Photo placeholder for each member using icon from lucide-react */}
             <div
@@ -80,25 +84,18 @@ const About = () => {
             {/* Card information */}
             <div className="p-4">
               {/* Team members name */}
-              <h2 className="text-(--white) font-bold text-base mb-2">
+              <h2 className="mb-2 text-base font-bold text-(--white)">
                 {member.name}
               </h2>
 
               {/* Team member bio */}
-              <p className="text-(--gray) text-xs leading-relaxed">
+              <p className="text-xs leading-relaxed text-(--gray)">
                 {member.bio}
               </p>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Bottom tagline */}
-      {/* <div className="bg-(--black) text-center py-6 border-t border-gray-800">
-        <p className="text-(--yellow) font-bold text-xl">
-          Start feeling at ease with JobEase
-        </p>
-      </div> */}
     </main>
   );
 };

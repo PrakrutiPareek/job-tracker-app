@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CallToAction from "../Components/CallToAction";
+import CallToAction from "../Components/UI/CallToAction";
 
 test("renders call-to-action heading", () => {
   render(<CallToAction />);

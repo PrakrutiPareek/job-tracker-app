@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Sidebar from "../Components/Sidebar";
+import Sidebar from "../Components/UI/Sidebar";
 
 vi.mock("../Components/LogoutBtn", () => ({
   default: () => <button>Logout</button>,

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Footer from "../Components/Footer";
+import Footer from "../Components/UI/Footer";
 
 test("renders footer navigation links", () => {
   render(
