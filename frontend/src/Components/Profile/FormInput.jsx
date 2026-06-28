@@ -7,6 +7,7 @@ export default function FormInput({
   value,
   onChange,
   error,
+  icon: Icon,
 }) {
   return (
     <div className="mt-4 px-12">
@@ -16,19 +17,30 @@ export default function FormInput({
       >
         {label}
       </label>
-
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        value={value}
-        onChange={onChange}
-        className={`w-full p-2 bg-[#E5E5E5] text-black outline-none text-lg ${
-          error ? "border border-red-500" : ""
-        }`}
-      />
+    <div className="relative">
+        {Icon && (
+          <Icon
+            size={18}
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+          />
+      )}
+       <input
+          type={type}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          className={`w-full rounded-lg border py-2 ${
+            Icon ? "pl-10 pr-3" : "px-3"
+          } ${
+            error
+              ? "border-red-500"
+              : "border-gray-300"
+          }`}
+        />
+      </div>
       {error && <p className="text-red-500 mt-1 text-sm">{error}</p>}
     </div>
   );
+  
 }
