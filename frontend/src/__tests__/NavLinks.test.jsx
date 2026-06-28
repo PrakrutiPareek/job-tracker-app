@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import NavLinks from "../Components/NavLinks";
+import NavLinks from "../Components/UI/NavLinks";
 
 const links = [
   { path: "/", label: "HOME" },

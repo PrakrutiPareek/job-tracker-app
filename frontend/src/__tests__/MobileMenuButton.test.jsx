@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import MobileMenuButton from "../Components/MobileMenuButton";
+import MobileMenuButton from "../Components/UI/MobileMenuButton";
 
 test("calls onClick when clicked", () => {
   const handleClick = vi.fn();

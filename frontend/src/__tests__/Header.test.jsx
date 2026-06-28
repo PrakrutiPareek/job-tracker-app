@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Header from "../Components/Header";
+import Header from "../Components/UI/Header";
 
 test("renders header brand and desktop navigation links", () => {
   render(

@@ -1,6 +1,5 @@
 import {
   User,
-  Phone,
   Mail,
   Briefcase,
 } from "lucide-react";
