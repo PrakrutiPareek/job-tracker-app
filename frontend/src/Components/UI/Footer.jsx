@@ -1,4 +1,5 @@
 import {NavLink} from "react-router-dom";
+import CallToAction from "./CallToAction";
 
 /*
  * Footer Component
@@ -16,6 +17,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="mt-auto border-t border-gray-700 bg-black">
+      <CallToAction />
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-8">
         {/* Navigation */}
         <nav

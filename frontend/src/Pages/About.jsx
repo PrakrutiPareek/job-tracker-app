@@ -42,7 +42,7 @@ const teamMembers = [
 const About = () => {
   return (
     // Page background
-    <main className="bg-(--black) py-10 px-4 font-headings">
+    <main className="h-full flex flex-col items-center justify-center bg-(--black) py-10 px-6 font-headings">
       {/* Page heading */}
       <div className="text-center mb-8">
         {/* Page title */}
