@@ -18,11 +18,8 @@ function Login() {
   const handleLogin = async () => {
     try {
       setFirebaseError("");
-
       await signInWithEmailAndPassword(auth, email, password);
-
       localStorage.setItem("user", "true");
-
       navigate("/profile/applications");
     } catch {
       setFirebaseError("Invalid email or password");
@@ -34,23 +31,23 @@ function Login() {
       setFirebaseError("Please enter your email first");
       return;
     }
-
     try {
       await sendPasswordResetEmail(auth, email);
       setFirebaseError("Password reset email sent. Check your inbox.");
-    } catch (error) {
-      console.log(error.code, error.message);
+    } catch {
       setFirebaseError("Error sending reset email");
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin();
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-(--black) text-(--yellow) px-4">
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleLogin();
-        }}
+        onSubmit={handleSubmit}
         className="bg-(--navy-blue) p-8 rounded-xl w-[90vw] max-w-md sm:max-w-lg md:max-w-xl"
       >
         <h1 className="text-3xl font-bold text-center mb-6">

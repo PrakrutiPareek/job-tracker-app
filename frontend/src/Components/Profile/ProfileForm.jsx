@@ -1,7 +1,7 @@
-import Button from "../Button";
+import Button from "../UI/Button";
 import FormInput from "./FormInput";
 import ExperienceSelect from "../Profile/ExperienceSelect";
-import { profileFields } from "../../constants/profileFields";
+import {profileFields} from "../../constants/profileFields";
 export default function ProfileForm({
   formData,
   errors,

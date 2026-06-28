@@ -41,6 +41,7 @@ git clone https://github.com/sonamjha123/group_6_project.git
 ### 2. Navigate to the frontend folder
 ```bash
 cd group_6_project/frontend
+```
 ### 3. Install dependencies
 ```bash
 npm install
@@ -51,6 +52,9 @@ npm install
 VITE_FIREBASE_API_KEY=your_key
 VITE_FIREBASE_AUTH_DOMAIN=your_domain
 VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_API_BASE_URL=http://localhost:5000
+
 ``` 
 ### 5. Run the project
 ```bash
@@ -81,8 +85,11 @@ If you are developing a production application, we recommend using TypeScript wi
 ## 📌 Notes
 
 - Authentication is handled using Firebase
-- Session state is currently managed using localStorage
+- Session state is currently managed using localStorage (temporary solution)
+- Future improvements include moving away from localStorage to a more scalable backend-based session management approach
+- The job search feature is currently limited to UK-based locations due to Adzuna API configuration
 - Tailwind CSS is used for styling to maintain consistency
+
 
 ## 🔗 Repository
 https://github.com/sonamjha123/group_6_project
