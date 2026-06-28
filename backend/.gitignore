@@ -2,7 +2,7 @@ node_modules
 .env
 
 # SQLite database
-jobs.de
+jobs.db
 
 #SQLite journal/WAL files
 *.db-journal
