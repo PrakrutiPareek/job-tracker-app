@@ -1,53 +1,162 @@
 # JobEase
 
-## 📌 Project Overview
+## Project Overview
+
 JobEase is a job application tracking platform designed to help users organize and manage their job search in one place. Users can track applications, monitor progress, and stay on top of opportunities.
 
 ---
 
-## 🚀 Features
+## Features
+
 - User Authentication (Login & Signup)
 - Job Application Tracking
 - Status Management
+- Manual saving of jobs you applied on other jobboard.
 - Job Search Integration
 - Forgot Password (Firebase email reset)
 - Responsive UI using Tailwind CSS
+- Web Accessibility
 
 ---
 
-## 👥 Team Members
-- Monique  
-- Nisha Ray  
-- Prakruti Pareek  
-- Sonam Jha  
-- Tara Ortega  
+## Team Members
+
+- Monique Kahin
+- Nisha Ray
+- Prakruti Pareek
+- Sonam Jha
+- Tara Ortega
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack (Dependencies)
+
+### Frontend
+
 - React (Vite)
-- Tailwind CSS
+- React Router
 - Firebase Authentication
-- GitHub
+- Tailwind CSS
+- Axios
+- Lucid react
+- React toastify
+- Vitest
+- React testing library
+
+### Backend
+
+- Express.js
+- SQLite (Database)
+- Axios
+- better-sqlit3
+- CORS
+- dotenv
+- Nodmon
+
+### External API
+
+- Adzuna Jobs API
 
 ---
 
-## ⚙️ How to Run the Project
+## Project Structure
+
+```
+group-6-project/
+│
+├── backend/
+│   ├── src/
+│   |    ├── controllers/
+│   |    ├── db/
+│   |    ├── routes/
+│   |    ├── services/
+│   │    └── server.js
+│   │
+│   ├── .gitignore
+|   ├── jobs.db
+│   └── package.json
+│
+│
+├── frontend/
+│   │   └── src/
+│   │        ├── _tests_/
+│   │        ├── api/
+│   │        ├── assets/
+│   │        ├── Components/
+|   |        ├── constants/
+│   │        ├── Pages/
+│   │        ├── utils/
+│   │        ├── App.jsx
+|   |        ├── firebase.js
+│   │        └── main.jsx
+│   │
+│   │
+│   ├── .gitignore
+|   ├── package.json
+|   ├── index.html
+│   └── vite.config.js
+│
+└── README.md
+```
+
+---
+
+## How to Run the Project
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/sonamjha123/group_6_project.git
-``` 
-### 2. Navigate to the frontend folder
-```bash
-cd group_6_project/frontend
 ```
-### 3. Install dependencies
+
+### 2. Backend Setup
+
+Navigate to backend folder
+
+```bash
+cd group_6_project/backend
+```
+
+Install dependencies
+
 ```bash
 npm install
-``` 
+```
 
-### 4. Set up environment variables
+Set up environment variables
+
+```bash
+PORT=5000
+ADZUNA_APP_ID=your_app_id
+ADZUNA_APP_KEY=your_app_key
+
+```
+
+Start the backend server
+
+```bash
+npm run dev
+```
+
+Server runs on
+http://localhost:5000
+
+### 2. Frontend setup
+
+Open another terminal.
+
+```bash
+cd frontend
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Set up environment variables
+
 ```bash
 VITE_FIREBASE_API_KEY=your_key
 VITE_FIREBASE_AUTH_DOMAIN=your_domain
@@ -55,41 +164,74 @@ VITE_FIREBASE_PROJECT_ID=your_project_id
 VITE_FIREBASE_APP_ID=your_app_id
 VITE_API_BASE_URL=http://localhost:5000
 
-``` 
-### 5. Run the project
+```
+
+Run the project
+
 ```bash
 npm run dev
-``` 
-### 6. Open in browser
+```
+
+Open in browser
 
 http://localhost:5173
 
+---
 
-# React + Vite Notes
+# API Endpoints
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Search jobs
 
-Currently, two official plugins are available:
+GET /api/jobs/search
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Query parameters: keyword, location
 
-## React Compiler
+## Saved jobs
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+GET /api/jobs/savedjobs
+POST /api/jobs/savejob
+DELETE /api/jobs/savedjobs/:id
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Team Contribution
 
-## 📌 Notes
+## Monique Kahin
+
+Contact Page, About Page, Manual Testing
+
+## Nisha Ray
+
+Authentication Pages UI, Firebase Setup, Protected Routes, Presentation Slides, Pagination, Unit Testing, readme.MD
+
+## Prakruti Pareek
+
+Application Page: UI, Validation, Logics, API Endpoints, Manual form, Basic Project Structure, PageNotFound, Routes, Unit testing, Documentation, readme.MD, Final refactoring of whole project
+
+## Sonam Jha
+
+Starting React app and initial setup, Basic backend setup, Profile Page UI and Backend, JobSearch Page UI and Backend,Adzuna API(External API), Post & Get endpoints for Save Flow, Unit Testing
+
+## Tara Ortega
+
+Wireframes, UI Components, Home Page, Design system, Responsive behaviour, Unit Testing
+
+---
+
+## Notes
 
 - Authentication is handled using Firebase
 - Session state is currently managed using localStorage (temporary solution)
-- Future improvements include moving away from localStorage to a more scalable backend-based session management approach
 - The job search feature is currently limited to UK-based locations due to Adzuna API configuration
-- Tailwind CSS is used for styling to maintain consistency
+- Application stat cards are updating on temporary base.
 
+### Future scope
 
-## 🔗 Repository
+- UPDATE endpoints for jobs
+- Saving Application stat card in state for consistent data
+- Third party authentication
+- Future improvements include moving away from localStorage to a more scalable backend-based session management approach
+
+## Repository
+
 https://github.com/sonamjha123/group_6_project

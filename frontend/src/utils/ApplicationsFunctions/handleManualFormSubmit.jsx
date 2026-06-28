@@ -9,7 +9,7 @@ const handleManualFormSubmit = async (formData, onJobSave) => {
       await onJobSave();
     }
 
-    toast.success("Successfully saved th job");
+    toast.success("Job Saved Successfully");
     return true;
   } catch {
     toast.error("Error saving job");
