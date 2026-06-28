@@ -16,7 +16,7 @@ const Home = () => {
     <>
       {/* Hero */}
       <section
-        className="relative flex min-h-[60vh] items-center justify-center overflow-hidden py-12"
+        className="relative flex min-h-[68vh] items-center justify-center overflow-hidden"
         style={{
           backgroundImage: `url(${heroBackground})`,
           backgroundPosition: "center",
