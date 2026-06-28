@@ -17,12 +17,16 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="mt-auto border-t border-gray-700 bg-black">
+<<<<<<< HEAD
       <CallToAction />
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-8">
+=======
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-3">
+>>>>>>> 5c89f94484e66fc61dd175c7736f748cc637b8b5
         {/* Navigation */}
         <nav
           aria-label="Footer Navigation"
-          className="flex flex-wrap justify-center gap-6 font-main font-semibold"
+          className="flex flex-wrap justify-center gap-4"
         >
           {footerLinks.map(({path, label}) => (
             <NavLink
@@ -38,7 +42,7 @@ const Footer = () => {
         </nav>
 
         {/* Copyright */}
-        <p className="text-center font-main text-sm text-gray-400">
+        <p className="text-center font-main text-xs text-gray-400">
           © {new Date().getFullYear()} JobEase. All rights reserved.
         </p>
       </div>
