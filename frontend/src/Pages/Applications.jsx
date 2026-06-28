@@ -65,7 +65,7 @@ const Applications = () => {
     ApplicationCardsStats(savedJobs);
 
   return (
-    <main className="mt-10 px-4 sm:px-6 lg:px-12 flex flex-col">
+    <main className="mt-10 px-4 sm:px-6 lg:px-12 flex flex-col pb-12">
       <div className="mb-6 flex flex-col justify-between items-center gap-4 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-[28px] font-bold font-headings text-(--yellow)">
