@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 // Pages
 import Home from "./Pages/Home";
@@ -12,12 +12,12 @@ import JobSearch from "./Pages/JobSearch";
 import PageNotFound from "./Pages/PageNotFound";
 
 // Layouts
-import MainLayout from "./Components/MainLayout";
-import UserLayout from "./Components/UserLayout";
+import MainLayout from "./Components/Layouts/MainLayout";
+import UserLayout from "./Components/Layouts/UserLayout";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {

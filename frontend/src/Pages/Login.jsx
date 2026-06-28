@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth } from "../firebase";
-import AuthInput from "../Components/AuthInput";
+import {auth} from "../firebase";
+import AuthInput from "../Components/UI/AuthInput";
+import {House} from "lucide-react";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -44,15 +45,15 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0f2e] via-[#1a1f4e] to-[#0a0f2e]">
+    <div className="min-h-screen flex items-center justify-center bg-(--black) text-(--yellow) px-4">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleLogin();
         }}
-        className="w-[420px] p-8 rounded-xl bg-white/5"
+        className="bg-(--navy-blue) p-8 rounded-xl w-[90vw] max-w-md sm:max-w-lg md:max-w-xl"
       >
-        <h1 className="text-2xl font-bold text-center mb-6 text-yellow-500">
+        <h1 className="text-3xl font-bold text-center mb-6">
           Log in to your account
         </h1>
 
@@ -63,6 +64,7 @@ function Login() {
         )}
 
         <AuthInput
+          id="login-email"
           label="Email"
           type="email"
           value={email}
@@ -70,6 +72,7 @@ function Login() {
         />
 
         <AuthInput
+          id="login-password"
           label="Password"
           type="password"
           value={password}
@@ -78,7 +81,7 @@ function Login() {
 
         <button
           type="submit"
-          className="w-full p-2 rounded font-bold bg-yellow-500 text-black"
+          className="w-full p-2 rounded font-bold bg-(--yellow) text-black mt-4"
         >
           Log In
         </button>
@@ -86,19 +89,20 @@ function Login() {
         <button
           type="button"
           onClick={handleForgotPassword}
-          className="block text-sm text-yellow-500 text-right mt-2 hover:underline"
+          className="block text-sm text-right mt-2 hover:underline"
         >
           Forgot Password?
         </button>
 
-        <p className="text-center mt-4">
-          <Link to="/signup" className="text-yellow-500">
-            No account yet? Sign Up
+        <p className="text-center mt-8">
+          No account yet?
+          <Link to="/signup" className="ml-2 underline">
+            Sign Up
           </Link>
         </p>
 
-        <Link to="/" className="block text-center mt-3 text-white text-xl">
-          ←
+        <Link to="/" className="flex justify-center mt-3">
+          <House size={20} />
         </Link>
       </form>
     </div>

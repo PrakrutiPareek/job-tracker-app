@@ -1,10 +1,14 @@
 export default function ExperienceSelect({value, onChange, error}) {
   return (
     <div className="mt-4 px-12">
-      <label className="block text-(--yellow) mb-3 text-md font-semibold">
+      <label
+        htmlFor="experience"
+        className="block text-(--yellow) mb-3 text-md font-semibold"
+      >
         Experience Level
       </label>
       <select
+        id="experience"
         name="experience"
         value={value}
         onChange={(e) => {

@@ -1,6 +1,6 @@
-import Header from "../Header";
+import Header from "../UI/Header";
 import {Outlet} from "react-router-dom";
-import Footer from "../Footer";
+import Footer from "../UI/Footer";
 
 /*
  * ===== Main Layout =====

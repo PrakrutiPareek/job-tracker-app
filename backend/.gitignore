@@ -1,2 +1,10 @@
 node_modules
 .env
+
+# SQLite database
+jobs.db
+
+#SQLite journal/WAL files
+*.db-journal
+*.db-wal
+*.db-shm

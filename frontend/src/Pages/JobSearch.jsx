@@ -1,14 +1,14 @@
 import {useState} from "react";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/UI/SearchBar";
 import JobCard from "../components/JobCard";
 import {fetchJobListings} from "../api/adzunaApi";
-import ErrorMessage from "../Components/ErrorMessage";
+import ErrorMessage from "../Components/UI/ErrorMessage";
 import handleApiError from "../utils/handleApiError";
 import apiRequest from "../utils/apiRequest";
 
 const JobSearch = () => {
   // State variable to store the job search keyword, location entered by the user
-  const [keyword, setKeyword] = useState(""); 
+  const [keyword, setKeyword] = useState("");
 
   const [location, setLocation] = useState("");
 

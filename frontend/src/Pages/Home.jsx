@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
-import Button from "../Components/Button";
-import CallToAction from "../Components/CallToAction";
+import Button from "../Components/UI/Button";
+import CallToAction from "../Components/UI/CallToAction";
 import heroBackground from "../assets/images/hero-bg.jpg";
 
 /*
