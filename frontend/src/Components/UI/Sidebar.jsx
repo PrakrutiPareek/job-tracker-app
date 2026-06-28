@@ -1,6 +1,6 @@
 import {Link, NavLink} from "react-router-dom";
 import {SquareUser, SearchCheck, SaveIcon, X} from "lucide-react";
-import logo from "../assets/images/logo-icon.png";
+import logo from "../../assets/images/logo-icon.png";
 import LogoutBtn from "./LogoutBtn";
 
 const Sidebar = ({isOpen = false, onClose = () => {}}) => {

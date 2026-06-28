@@ -62,7 +62,10 @@ const AppTableBody = ({jobs, onStatusChange, onDelete, startIndex}) => {
             <input type="textarea" placeholder="Notes.." />
           </td>
           <td>
-            <button onClick={() => onDelete(job.id)}>
+            <button
+              onClick={() => onDelete(job.id)}
+              aria-label="Delete application"
+            >
               <Trash2 size={20} />
             </button>
           </td>

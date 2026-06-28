@@ -59,8 +59,8 @@ const ManualApplicationForm = ({isOpen, onClose, onJobSave}) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/80 p-4">
-      <div className="w-full max-w-2xl rounded-xl bg-(--navy-blue) p-6 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-stretch justify-stretch sm:items-center sm:justify-end bg-black/80 p-0 sm:p-4">
+      <div className="h-[95vh] w-[100vh] overflow-y-auto rounded-xl bg-(--navy-blue) sm:p-7 p-6 shadow-xl sm:h-auto sm:w-full sm:max-w-2xl sm:max-h-[90vh]">
         <div className="flex justify-between mb-2">
           <h2 className="text-3xl font-extrabold">Add Application</h2>
           <button onClick={onClose}>

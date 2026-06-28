@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 import Button from "./Button";
 import MobileMenuButton from "./MobileMenuButton";
 import NavLinks from "./NavLinks";
-import logo from "../assets/images/logo-icon.png";
+import logo from "../../assets/images/logo-icon.png";
 
 /*
  * Header Component
@@ -15,9 +15,9 @@ import logo from "../assets/images/logo-icon.png";
  */
 
 const navLinks = [
-  { path: "/", label: "HOME" },
-  { path: "/profile", label: "PROFILE" },
-  { path: "/profile/applications", label: "APPLICATIONS" },
+  {path: "/", label: "HOME"},
+  {path: "/profile", label: "PROFILE"},
+  {path: "/profile/applications", label: "APPLICATIONS"},
 ];
 
 const Header = () => {

@@ -1,7 +1,0 @@
-# Dependencies
-node_modules/
-frontend/node_modules/
-# Environment variables
-.env
-# Duplicate project folder (cleanup protection)
-group_6_project_fixed

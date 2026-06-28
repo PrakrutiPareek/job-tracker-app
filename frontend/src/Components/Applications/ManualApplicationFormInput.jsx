@@ -8,7 +8,7 @@ export default function ManualApplicationFormInput({
   error,
 }) {
   return (
-    <div className="mt-2 px-10">
+    <div className="mt-2 px-4 sm:px-6">
       <label className="block text-(--yellow) mb-3 text-md font-semibold">
         {label}
       </label>

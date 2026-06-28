@@ -16,7 +16,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   // Handle input changes and clear errors for the changed field
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = ({target: {name, value}}) => {
     // Update form data, set hasChanges to true, and clear any existing error for the changed field
     setFormData((prev) => ({
       ...prev,

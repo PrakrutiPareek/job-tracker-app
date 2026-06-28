@@ -1,6 +1,6 @@
 const SourceSelect = ({value, onChange, error}) => {
   return (
-    <div className="mt-2 px-10">
+    <div className="mt-2 px-4 sm:px-6">
       <label
         htmlFor="source"
         className="block text-(--yellow) mb-3 text-md font-semibold"

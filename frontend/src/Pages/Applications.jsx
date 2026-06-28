@@ -3,12 +3,13 @@ import AppTableBody from "../Components/Applications/AppTableBody";
 import AppTableHeads from "../Components/Applications/AppTableHeads";
 import AppCardGrid from "../Components/Applications/AppCardGrid";
 import ManualApplicationForm from "../Components/Applications/ManualApplicationForm";
-import Pagination from "../Components/Pagination";
+import Pagination from "../Components/Applications/Pagination";
 import EmptyAppState from "../Components/Applications/EmptyAppState";
 import {getsavedJobs} from "../api/savedjobsApi";
 import {toast} from "react-toastify";
 import handleDeleteJob from "../utils/ApplicationsFunctions/handleDeleteJob";
 import ApplicationCardsStats from "../utils/ApplicationsFunctions/ApplicationCardsStats";
+import Button from "../Components/UI/Button";
 
 const Applications = () => {
   //fetching saved jobs from database
@@ -64,20 +65,17 @@ const Applications = () => {
     ApplicationCardsStats(savedJobs);
 
   return (
-    <main className="mt-10 mx-12 flex flex-col">
-      <div className="flex justify-between items-center mb-10">
+    <main className="mt-10 px-4 sm:px-6 lg:px-12 flex flex-col">
+      <div className="mb-6 flex flex-col justify-between items-center gap-4 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-[28px] font-bold font-headings text-(--yellow)">
             Applications
           </h1>
           <p>Take control of your job search!</p>
         </div>
-        <button
-          onClick={() => setShowForm(true)}
-          className="bg-(--yellow) text-(--black) px-4 py-3 rounded-xl font-bold transition-transform active:scale-90 hover:scale-105 hover:text-(--white)"
-        >
+        <Button variant="primary" onClick={() => setShowForm(true)}>
           + Add Application
-        </button>
+        </Button>
       </div>
       {/* Manual entry form */}
       <ManualApplicationForm
@@ -97,8 +95,8 @@ const Applications = () => {
       {totalJobs === 0 ? (
         <EmptyAppState />
       ) : (
-        <div className="overflow-hidden rounded-xl mt-8">
-          <table className="bg-(--navy-blue) w-full">
+        <div className="overflow-x-auto rounded-xl mt-8">
+          <table className="bg-(--navy-blue) w-full min-w-225">
             <AppTableHeads />
 
             <AppTableBody
