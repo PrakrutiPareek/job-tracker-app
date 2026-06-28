@@ -42,7 +42,7 @@ const teamMembers = [
 const About = () => {
   return (
     // Page background
-    <main className="bg-(--black) py-10 px-4 font-headings">
+    <main className="flex min-h-screen flex-col justify-center bg-(--black) py-10 px-4 font-headings">
       {/* Page heading */}
       <div className="text-center mb-8">
         {/* Page title */}
@@ -59,7 +59,7 @@ const About = () => {
       </div>
 
       {/* Team members cards loop using teamMembers array and creates a card for each member */}
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 sm:grid-cols-2  sm:px-6 lg:grid-cols-5 lg:px-8">
         {teamMembers.map((member) => (
           // Team member cards with effect on hover
           <div

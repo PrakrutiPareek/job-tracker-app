@@ -16,7 +16,7 @@ const Home = () => {
     <>
       {/* Hero */}
       <section
-        className="relative flex min-h-[80vh] items-center justify-center overflow-hidden"
+        className="relative flex min-h-[60vh] items-center justify-center overflow-hidden py-12"
         style={{
           backgroundImage: `url(${heroBackground})`,
           backgroundPosition: "center",
@@ -27,7 +27,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-3xl px-6 text-center">
-          <h1 className="mb-8 font-headings text-4xl font-bold text-(--yellow) md:text-5xl">
+          <h1 className="mb-6 font-headings text-4xl font-bold text-(--yellow) md:text-5xl">
             Job Application Tracker
           </h1>
 
@@ -39,7 +39,7 @@ const Home = () => {
           <Link
             to="/signup"
             aria-label="Create a JobEase account"
-            className="mt-10 inline-block"
+            className="mt-8 inline-block"
           >
             <Button variant="primary">REGISTER</Button>
           </Link>
