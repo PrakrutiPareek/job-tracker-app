@@ -14,11 +14,9 @@ const Button = ({
   ...props
 }) => {
   const variants = {
-    primary:
-      "bg-(--yellow) text-black hover:brightness-95",
+    primary: "bg-(--yellow) text-(--white) hover:brightness-95",
 
-    secondary:
-      "bg-white text-black hover:bg-gray-100",
+    secondary: "bg-white text-black hover:bg-gray-100",
   };
 
   return (

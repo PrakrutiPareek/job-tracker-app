@@ -35,15 +35,10 @@ const Sidebar = ({isOpen = false, onClose = () => {}}) => {
       <Link
         to="/"
         aria-label="JobEase Home"
-        className="flex items-center gap-2 border-b-2 border-(--navy-blue) p-10 text-4xl font-bold text-(--yellow)"
+        className="border-b-2 border-(--navy-blue) p-10 text-4xl font-bold text-(--yellow) font-headings"
         onClick={onClose}
       >
-        <img
-          src={logo}
-          alt="JobEase Logo"
-          className="h-10 w-auto object-contain"
-        />
-        <span className="font-headings">JobEase</span>
+        Job<span className="text-(--white)">Ease</span>
       </Link>
 
       <nav className="mx-6 mt-8 flex-1" aria-label="Sidebar navigation">

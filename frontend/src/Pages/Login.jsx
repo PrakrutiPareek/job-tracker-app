@@ -78,7 +78,7 @@ function Login() {
 
         <button
           type="submit"
-          className="w-full p-2 rounded font-bold bg-(--yellow) text-black mt-4"
+          className="w-full p-2 rounded font-bold bg-(--yellow) text-(--white) mt-4"
         >
           Log In
         </button>

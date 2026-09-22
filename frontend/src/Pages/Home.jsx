@@ -14,15 +14,7 @@ const Home = () => {
   return (
     <>
       {/* Hero */}
-      <section
-        className="relative flex min-h-[68vh] items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${heroBackground})`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
+      <section className="relative flex h-full min-h-0 items-center justify-center bg-(--navy-blue)">
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-3xl px-6 text-center">

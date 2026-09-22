@@ -26,21 +26,14 @@ const Header = () => {
 
   return (
     <header className="border-b border-gray-700 bg-black">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:grid md:grid-cols-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-10 py-5 md:grid md:grid-cols-3">
         <Link
           to="/"
           aria-label="Go to Home Page"
-          className="flex items-center gap-3 justify-self-start"
+          className="flex items-center justify-self-start font-headings text-3xl font-bold text-(--yellow)"
           onClick={closeMenu}
         >
-          <img
-            src={logo}
-            alt="JobEase Logo"
-            className="h-10 w-10 object-contain"
-          />
-          <span className="font-headings text-3xl font-bold text-(--yellow)">
-            JobEase
-          </span>
+          Job<span className="text-(--white)">Ease</span>
         </Link>
 
         <div className="hidden justify-center md:flex">

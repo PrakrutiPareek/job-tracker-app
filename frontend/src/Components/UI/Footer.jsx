@@ -18,11 +18,11 @@ const Footer = () => {
   return (
     <footer className="mt-auto border-t border-gray-700 bg-black">
       <CallToAction />
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 py-2">
         {/* Navigation */}
         <nav
           aria-label="Footer Navigation"
-          className="flex flex-wrap justify-center gap-4"
+          className="flex justify-center gap-4"
         >
           {footerLinks.map(({path, label}) => (
             <NavLink
