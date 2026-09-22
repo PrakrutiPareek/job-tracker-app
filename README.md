@@ -10,6 +10,38 @@ This was developed as a **collaborative group project**. This repository is my p
 
 ---
 
+# Screenshots
+
+## Home Page
+
+![HomePage](frontend\src\assets\screenshots\home_page.png)
+
+## Profile Page
+
+![ProfilePage](frontend\src\assets\screenshots\profile_page.png)
+
+## Applications Page
+
+![ApplicationsPage](frontend\src\assets\screenshots\applications_page.png)
+
+## Job search Page
+
+![JobSearchPAge](frontend\src\assets\screenshots\jobsearch_page.png)
+
+## Login Page
+
+![LoginPage](frontend\src\assets\screenshots\login_page.png)
+
+## Signup Page
+
+![SignupPage](frontend\src\assets\screenshots\signup_page.png)
+
+## PageNotFound
+
+![PageNotFound](frontend\src\assets\screenshots\pagenotfound.png)
+
+---
+
 ## Features
 
 - User Authentication (Login & Signup)
