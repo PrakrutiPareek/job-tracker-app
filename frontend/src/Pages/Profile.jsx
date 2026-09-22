@@ -1,6 +1,6 @@
-import { toast } from "react-toastify";
-import { useState } from "react";
-import { validateProfileForm } from "../Utils/profileValidation";
+import {toast} from "react-toastify";
+import {useState} from "react";
+import {validateProfileForm} from "../utils/profileValidation";
 import ProfileForm from "../Components/Profile/ProfileForm";
 const INITIAL_FORM_DATA = {
   firstName: "",

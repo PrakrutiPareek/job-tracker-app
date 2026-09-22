@@ -5,7 +5,7 @@ import AppCardGrid from "../Components/Applications/AppCardGrid";
 import ManualApplicationForm from "../Components/Applications/ManualApplicationForm";
 import Pagination from "../Components/Applications/Pagination";
 import EmptyAppState from "../Components/Applications/EmptyAppState";
-import {getsavedJobs} from "../api/savedjobsApi";
+import {getsavedJobs} from "../api/savedJobsApi";
 import {toast} from "react-toastify";
 import handleDeleteJob from "../utils/ApplicationsFunctions/handleDeleteJob";
 import ApplicationCardsStats from "../utils/ApplicationsFunctions/ApplicationCardsStats";
