@@ -1,4 +1,4 @@
-import {deleteJob} from "../../api/savedjobsApi";
+import {deleteJob} from "../../api/savedJobsApi";
 import {toast} from "react-toastify";
 
 const handleDeleteJob = async (id, setSavedJobs) => {

@@ -1,5 +1,5 @@
 // JobCard component displays individual job listings with company name, job title, location, and action buttons for saving or applying to the job.
-import {savedJobsApi} from "../api/savedjobsApi";
+import {savedJobsApi} from "../api/savedJobsApi";
 import Button from "./UI/Button";
 import {toast} from "react-toastify";
 const JobCard = ({job}) => {

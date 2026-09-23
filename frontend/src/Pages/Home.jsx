@@ -1,14 +1,5 @@
 import {Link} from "react-router-dom";
 import Button from "../Components/UI/Button";
-import heroBackground from "../assets/images/hero-bg.jpg";
-
-/*
- * Home Page
- *
- * Displays:
- * - Hero section
- * - Call-to-action
- */
 
 const Home = () => {
   return (

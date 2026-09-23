@@ -1,4 +1,4 @@
-import {savedJobsApi} from "../../api/savedjobsApi";
+import {savedJobsApi} from "../../api/savedJobsApi";
 import {toast} from "react-toastify";
 
 const handleManualFormSubmit = async (formData, onJobSave) => {
