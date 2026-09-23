@@ -6,8 +6,6 @@ const Home = () => {
     <>
       {/* Hero */}
       <section className="relative flex h-full min-h-0 items-center justify-center bg-(--navy-blue)">
-        <div className="absolute inset-0 bg-black/50" />
-
         <div className="relative z-10 max-w-3xl px-6 text-center">
           <h1 className="mb-6 font-headings text-4xl font-bold text-(--yellow) md:text-5xl">
             Job Application Tracker
