@@ -5,6 +5,7 @@ node_modules
 jobs.db
 
 #SQLite journal/WAL files
+*.db
 *.db-journal
 *.db-wal
 *.db-shm
